@@ -1,4 +1,4 @@
-package com.ruby.java_ch06;
+package java_ch06;
 
 public class Armor {
 	private String name; //private는 같은 클래스 안에서만 사용가능, 외부 클래스에서 접근이 안 됨.

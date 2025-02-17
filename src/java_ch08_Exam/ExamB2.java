@@ -1,4 +1,4 @@
-package java_ch08_ExamB1;
+package java_ch08_Exam;
 
 class Item2 { // Item 클래스
 	private String name;

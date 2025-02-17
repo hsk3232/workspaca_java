@@ -1,4 +1,4 @@
-package java_ch08_ExamB1;
+package java_ch08_Exam;
 
 import java.time.LocalDate;
 

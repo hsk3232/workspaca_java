@@ -1,4 +1,4 @@
-package com.ruby.java_ch06;
+package java_ch06;
 
 public class StaticMethodTest {
 	public static void main(String[] args) {
