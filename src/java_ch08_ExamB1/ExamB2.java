@@ -1,4 +1,4 @@
-package java_ch08_ExamB2;
+package java_ch08_ExamB1;
 
 class Item2 { // Item 클래스
 	private String name;
@@ -216,6 +216,7 @@ class Order2 {
 
 		return totalAmount;
 	}
+	// 총할인 금액
 
 	public double calculateDiscountedTotal() {
 		double totalAmount = calculateTotal();
