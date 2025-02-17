@@ -149,40 +149,39 @@ abstract class Customer2 { // Customer 추상 클래스 정의
 	}
 
 	abstract double applyDiscount(double totalAmount);
-	
-	
+
 }
 
 //RegularCustomer 클래스: Customer 클래스를 상속받음
 class RegularCustomer extends Customer2 {
 	static final double REGULARDISCOUNT_RATE = 0.03;
 
-
 	public RegularCustomer(String cname, String city, int age) {
 		super(cname, city, age);
-		
 
 	}
+	
+	
 
 	@Override // 일반 고객 할인 적용
 	public double applyDiscount(double totalAmount) {
-		System.out.println("discountRate = " + REGULARDISCOUNT_RATE );
-		
+		return  totalAmount*REGULARDISCOUNT_RATE;
+
 	}
 }
 
 //PremiumCustomer 클래스: Customer 클래스를 상속받음
 class PremiumCustomer extends Customer2 {
 	static final double PREMIUMDISCOUNT_RATE = 0.1;
-	
+
 	public PremiumCustomer(String cname, String city, int age) {
 		super(cname, city, age);
 
-		
 	}
 
 	@Override
 	public double applyDiscount(double totalAmount) {
+		return  totalAmount*PREMIUMDISCOUNT_RATE;
 
 	}
 }
@@ -191,13 +190,14 @@ class PremiumCustomer extends Customer2 {
 class Order2 {
 	private Customer2 customer;
 	private Item2[] items = new Item2[10];
-	private int[] quantities = new int [10];
-	private int itemCount =0;
+	private int[] quantities = new int[10];
+	private int itemCount = 0;
 	
 	
+
 	public Order2(Customer2 customer) {
 		this.customer = customer;
-		
+
 	}
 
 	public void addItem(Item2 item, int quantity) {
@@ -205,35 +205,48 @@ class Order2 {
 		quantities[itemCount] = quantity; // 인덱스에 quantities(수량) 저장
 		item.reduceStock(quantity);
 		itemCount++;
-		
+
 	}
 
 	public double calculateTotal() {
-		double total=0; // 지역변수는 개발자가 초기화 해줘야 한다. 초기화 자동으로 안됨.
-		for (int i = 0; i < itemCount; i++) {
-			total += items[i].getPrice();
+		double totalAmount = 0; // 지역변수는 개발자가 초기화 해줘야 한다. 초기화 자동으로 안됨.
+			for (int i = 0; i < itemCount; i++) {
+			totalAmount += items[i].getPrice()* quantities[i];
 		}
-			
-		return total;	
+
+		return totalAmount;
 	}
 
 	public double calculateDiscountedTotal() {
-
+		double totalAmount = calculateTotal();
+        double discountAmount = customer.applyDiscount(totalAmount);
+        return totalAmount - discountAmount;
 	}
 
-	public void printOrderSummary() {
-		
-	System.out.println(customer.toString());
-		
-		//아이템 목록 출력, 배열이기 때문에 for루프를 이용해서 item 하나 하나를 출력한다.
+
+
 	
-		for(int i=0; i <count; i++) {
+
+	public void printOrderSummary() {
+
+		System.out.print(customer.toString());
+		double totalAmount = calculateTotal();
+        double discountAmount = customer.applyDiscount(totalAmount);
+        
+		if( discountAmount/totalAmount  == PremiumCustomer.PREMIUMDISCOUNT_RATE) {
+			System.out.println(", DiscountRate = " + PremiumCustomer.PREMIUMDISCOUNT_RATE);
+		}
+
+		// 아이템 목록 출력, 배열이기 때문에 for루프를 이용해서 item 하나 하나를 출력한다.
+
+		for (int i = 0; i < itemCount; i++) {
 			System.out.println(items[i].toString());
 		}
-		
-		//아이템 총계를 출력한다.
+
+		// 아이템 총계를 출력한다.
 		System.out.println("Total = " + calculateTotal());
-		
+		System.out.println("\t" + "=>" + calculateDiscountedTotal() + " [Discount]");
+
 		/*
 		 * 할인된 가격의 합계 출력 할인 금액 합계 출력
 		 */

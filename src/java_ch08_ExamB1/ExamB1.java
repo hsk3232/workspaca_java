@@ -172,12 +172,13 @@ class Order { // Order 클래스 생성
 	double calculateTotal() {
 		double total=0; // 지역변수는 개발자가 초기화 해줘야 한다. 초기화 자동으로 안됨.
 		for (int i = 0; i < count; i++) {
-			total += items[i].getPrice();
+			total += items[i].getPrice()* quantities[i];
 		}
 			
 		return total;	
 	}
 
+	
 
 	void printOrderSummary() {
 		//고객 명단 출력

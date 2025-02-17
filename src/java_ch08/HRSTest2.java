@@ -17,7 +17,7 @@ public class HRSTest2 {
 	
 	public static void main(String[] args) {
 		Salesman s = new Salesman();
-		Manager m = Manager.getInstance(); // 추상클래스라 인스턴스를 가질 수 없음.
+		Manager m = new Manager(); // 추상클래스라 인스턴스를 가질 수 없음.
 		
 		Consultant c = new Consultant();
 		
