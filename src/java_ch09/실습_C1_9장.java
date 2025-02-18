@@ -1,5 +1,6 @@
 package java_ch09;
 
+import java.sql.Array;
 import java.util.Arrays;
 
 /*
@@ -70,8 +71,14 @@ class Book {
 // Library 클래스
 class Library {
 	static final int CAPACITY = 20;
-	private Book[] books = new Book[5];
+	private Book[] books = new Book[CAPACITY];
 	private int top;
+	
+	
+
+	public Library() {
+		System.out.println(Array.toString(books));
+	}
 
 	public Book[] getBooks() {
 		return books;
@@ -88,24 +95,24 @@ class Library {
 	public void setTop(int top) {
 		this.top = top;
 	}
-	
 
-	public void addBook(Book book) {
-		
-		for(i = 0; i < 20; i++) {
-			books[i] = book;
+	public boolean addBook(Book book) {
+		for(top = 0; top > CAPACITY; top++) {
+			books[top] = book;
 		}
-
+			return true;
 	}
 
 	public void printBooks(String msg) {
-
+		System.out.println(msg);
+		
+		
 	}
 
 	public void sortBooksByTitle() {
 		// String의 compareTo() 사용
 		Arrays.sort(books, (b1, b2) -> b1.getTitle().compareTo(b2.getTitle()));// 9.3.3 Arrays 클래스
-	}
+	}// 0부터 top까지 코드 중 2개씩 꺼내서 비교하는데, 스트링 클래스 getTiltle을 호출해서 비교하는 람다식
 
 	public void sortBooksByISBN() {
 		// String의 compareTo() 사용
@@ -116,6 +123,9 @@ class Library {
 		// for(int j = i+1; j<)
 		// if(arr[i]> arr[j])
 		// swap(arr, i, j)
+	
+	
+	
 
 	public Book searchBookByTitle(String title) {
 		
@@ -142,12 +152,14 @@ public class 실습_C1_9장 {
 		Book book3 = new Book("C++", "을지문덕", 2008, "8");
 		Book book4 = new Book("자료구조", "연개소문", 1994, "45");
 		Book book5 = new Book("리액트", "김춘추", 1999, "7");
+		
 		// 책 추가
 		library.addBook(book1);
 		library.addBook(book2);
 		library.addBook(book3);
 		library.addBook(book4);
 		library.addBook(book5);
+		
 		// 도서 목록 출력
 		library.printBooks("\n제목정렬전");
 		// 도서 목록 정렬
@@ -160,6 +172,7 @@ public class 실습_C1_9장 {
 		library.sortBooksByISBN();
 		// 정렬된 도서 목록 출력
 		library.printBooks("\nISBN정렬후");
+		
 		// 특정 제목으로 도서 검색
 		String searchTitle = "자바";
 		Book foundBook = library.searchBookByTitle(searchTitle);

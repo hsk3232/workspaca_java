@@ -20,7 +20,7 @@ public class Test19_실습대상 {
 		System.out.println(title);
 
 		String str = "1, 2, 3, 4, 5, 6   7,, 8";
-		String[] result = str.split("[\\s,]+");
+		String[] result = str.split("[\\s,]+");// 빈칸(\\s) 또는 ,이 1번이상 있는데, 이것을 나눠서 배열을 만들어라.
 		System.out.println(Arrays.toString(result));
 
 		String temp = "-20";
