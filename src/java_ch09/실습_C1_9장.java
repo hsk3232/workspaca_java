@@ -72,8 +72,6 @@ class Library {
 	static final int CAPACITY = 20;
 	private Book[] books;
 	private int top;
-	
-	
 
 	public Library() {
 		books = new Book[CAPACITY];
@@ -97,55 +95,74 @@ class Library {
 	}
 
 	public boolean addBook(Book book) {
-		for(top = 0; top > CAPACITY; top++) {
-			books[top] = book;
+		if (top > CAPACITY) {
+			System.out.println("더 이상 입력할 수 없습니다.");
+			return false;
 		}
-			return true;
+		books[top++] = book;
+		return true;
 	}
 
 	public void printBooks(String msg) {
-		System.out.println(books.toString());
-		
-		
+		System.out.println(msg);
+		for (int i = 0; i < top; i++) {
+			System.out.println(books[i].toString());
+		}
+		System.out.println("-".repeat(60));
 	}
 
 	public void sortBooksByTitle() {
 		// String의 compareTo() 사용
 //		Arrays.sort(books, (b1, b2) -> b1.getTitle().compareTo(b2.getTitle()));// 9.3.3 Arrays 클래스
-		//↑ books 라는 배열의 시작과 끝이 없으니 모두 전체를 비교해서 정렬해라. capacity가 20개이니 20개 전부를 비교해서 정렬하려하니 값은 5개 밖에 안 들어가 있음으로 null 에러가 난다.
-		
-		Arrays.sort(books, 0, top, (b1, b2) -> b1.getTitle().compareTo(b2.getTitle())); // 9.3.3 Arrays 클래스
+		// ↑ books 라는 배열의 시작과 끝이 없으니 모두 전체를 비교해서 정렬해라. capacity가 20개이니 20개 전부를 비교해서
+		// 정렬하려하니 값은 5개 밖에 안 들어가 있음으로 null 에러가 난다.
+
+//		Arrays.sort(books, 0, top, (b1, b2) -> b1.getTitle().compareTo(b2.getTitle())); // 9.3.3 Arrays 클래스
+//	}
 		// 0부터 top까지 코드 중 2개씩 꺼내서 비교하는데, 스트링 클래스 getTiltle을 호출해서 비교하는 람다식
-		
-		//객체의 정렬
-//		for(int i= 0; i<top; i++) 
-//			for(int j =i+1; j<top; j++) {
-//				swap(books, i, j);
-//			}		
+
+		// 객체의 정렬
+
+		int last = top - 1;
+		while (true) {
+			for (int i = 0; i < top; i++)
+				for (int j = i + 1; j < top; j++) {
+					if (books[i].getTitle().compareTo(books[i + 1].getTitle()) > 0) {
+
+							Book b = books[i];
+						books[i] = books[i + 1];
+						books[i + 1] = b;
+					}
+				}
+			if (--last == 1)
+				break;
+		}
+
 	}
-//	
-//	static void swap(Book[]books, int i, int j) {
+//	for(int i= 0; i<top; i++) 
+//		for(int j =i+1; j<top; j++) {
+//			swap(books, i, j);
+//			
+//	static void swap(Book[] books, int i, int j) {
 //		Book temp = books[i];
 //		books[i] = books[j];
 //		books[j] = temp;
 //	}
-	
-	
+
 	public void sortBooksByISBN() {
 		// String의 compareTo() 사용
-		Arrays.sort(books, (b1, b2) -> Integer.parseInt(b1.getISBN()) - Integer.parseInt(b2.getISBN()));// 9.3.3
+		Arrays.sort(books, 0, top, (b1, b2) -> Integer.parseInt(b1.getISBN()) - Integer.parseInt(b2.getISBN()));// 9.3.3
 		// for문 중첩 써서 가능하니 생각해 볼것. // Arrays
 		// 클래스
 	} // for(int i = 0; i< ; i++)
 		// for(int j = i+1; j<)
 		// if(arr[i]> arr[j])
 		// swap(arr, i, j)
-	
-	
-	
 
 	public Book searchBookByTitle(String title) {
+		String index = Arrays.binarySearch(books, "자바");
 		
+		return 
 
 	}
 }
@@ -169,27 +186,28 @@ public class 실습_C1_9장 {
 		Book book3 = new Book("C++", "을지문덕", 2008, "8");
 		Book book4 = new Book("자료구조", "연개소문", 1994, "45");
 		Book book5 = new Book("리액트", "김춘추", 1999, "7");
-		
+
 		// 책 추가
 		library.addBook(book1);
 		library.addBook(book2);
 		library.addBook(book3);
 		library.addBook(book4);
 		library.addBook(book5);
-		
+
 		// 도서 목록 출력
-		library.printBooks("\n제목정렬전");
+		library.printBooks("\n제목 정렬전");
 		// 도서 목록 정렬
+	
 		library.sortBooksByTitle();
 		// 정렬된 도서 목록 출력
-		library.printBooks("\n제목정렬후");
+		library.printBooks("\n제목 정렬후");
 		// 특정 제목으로 도서 검색
-		library.printBooks("\nISBN정렬전");
+		library.printBooks("\nISBN 정렬전");
 		// 도서 목록 정렬
 		library.sortBooksByISBN();
 		// 정렬된 도서 목록 출력
-		library.printBooks("\nISBN정렬후");
-		
+		library.printBooks("\nISBN 정렬후");
+
 		// 특정 제목으로 도서 검색
 		String searchTitle = "자바";
 		Book foundBook = library.searchBookByTitle(searchTitle);

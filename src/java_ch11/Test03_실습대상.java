@@ -9,23 +9,22 @@ import java.io.IOException;
 public class Test03_실습대상 {
 
 	public static void main(String[] args) {
-		FileInputStream fi = null;
-		// try(FileInputStream fi = new FileInputStream("a.txt"))
-		// {//try-catch-resources문
-		try {
-			fi = new FileInputStream("a4.txt");
+//		FileInputStream fi = null;
+		 try(FileInputStream fi = new FileInputStream("a.txt"))
+		 {//try-catch-resources문
+		
 			int c = fi.read();
-			//fi.read(null);
+			fi.read(null);
 			System.out.println((char) c);
 		} catch (IOException e) {
-			if (fi != null) {
-				try {
-					fi.close();
-				} catch (IOException e1) {
+//			if (fi != null) {
+//				try {
+//					fi.close();
+//				} catch (IOException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			}
+//					e1.printStackTrace();
+//				}
+//			}
 			e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {

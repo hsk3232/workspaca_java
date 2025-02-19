@@ -9,7 +9,7 @@ public class Test12_실습대상 {
 	static void showData(String[] arr) {
 		System.out.println();
 		for (String st : arr)
-			System.out.print(st + " -> ");
+			System.out.print("*" + st + " -> ");
 	}
 
 	static void sortData(String[] arr, int[] arrInt) {
