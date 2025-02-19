@@ -1,6 +1,5 @@
 package java_ch09;
 
-import java.sql.Array;
 import java.util.Arrays;
 
 /*
@@ -71,13 +70,14 @@ class Book {
 // Library 클래스
 class Library {
 	static final int CAPACITY = 20;
-	private Book[] books = new Book[CAPACITY];
+	private Book[] books;
 	private int top;
 	
 	
 
 	public Library() {
-		System.out.println(Array.toString(books));
+		books = new Book[CAPACITY];
+		top = 0;
 	}
 
 	public Book[] getBooks() {
@@ -104,16 +104,33 @@ class Library {
 	}
 
 	public void printBooks(String msg) {
-		System.out.println(msg);
+		System.out.println(books.toString());
 		
 		
 	}
 
 	public void sortBooksByTitle() {
 		// String의 compareTo() 사용
-		Arrays.sort(books, (b1, b2) -> b1.getTitle().compareTo(b2.getTitle()));// 9.3.3 Arrays 클래스
-	}// 0부터 top까지 코드 중 2개씩 꺼내서 비교하는데, 스트링 클래스 getTiltle을 호출해서 비교하는 람다식
-
+//		Arrays.sort(books, (b1, b2) -> b1.getTitle().compareTo(b2.getTitle()));// 9.3.3 Arrays 클래스
+		//↑ books 라는 배열의 시작과 끝이 없으니 모두 전체를 비교해서 정렬해라. capacity가 20개이니 20개 전부를 비교해서 정렬하려하니 값은 5개 밖에 안 들어가 있음으로 null 에러가 난다.
+		
+		Arrays.sort(books, 0, top, (b1, b2) -> b1.getTitle().compareTo(b2.getTitle())); // 9.3.3 Arrays 클래스
+		// 0부터 top까지 코드 중 2개씩 꺼내서 비교하는데, 스트링 클래스 getTiltle을 호출해서 비교하는 람다식
+		
+		//객체의 정렬
+//		for(int i= 0; i<top; i++) 
+//			for(int j =i+1; j<top; j++) {
+//				swap(books, i, j);
+//			}		
+	}
+//	
+//	static void swap(Book[]books, int i, int j) {
+//		Book temp = books[i];
+//		books[i] = books[j];
+//		books[j] = temp;
+//	}
+	
+	
 	public void sortBooksByISBN() {
 		// String의 compareTo() 사용
 		Arrays.sort(books, (b1, b2) -> Integer.parseInt(b1.getISBN()) - Integer.parseInt(b2.getISBN()));// 9.3.3
