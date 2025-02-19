@@ -24,7 +24,9 @@ public class Test01_실습대상 {
 		 * catch(Exception e) { //unreachable - 상위 클래스로서 모두 여기서 capture하기 때문이다
 		 * System.out.println("Exception 처리"); }
 		 */
-		catch (ArrayIndexOutOfBoundsException e1) {
+		catch (ArrayIndexOutOfBoundsException e1) { //try 처리하다가 오류가 나면, e1 변수를 실행하는데, 
+			// 그 타입이 ArrayIndexOutOfBoundsException게 맞으면 실행, 아니면 다음 catch로 이동
+			
 			e1.printStackTrace();// 교재 542
 			System.out.println(e1.getMessage());// 교재 542
 		} catch (NullPointerException e2) {
