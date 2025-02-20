@@ -129,7 +129,7 @@ class Library {
 				for (int j = i + 1; j < top; j++) {
 					if (books[i].getTitle().compareTo(books[i + 1].getTitle()) > 0) {
 
-							Book b = books[i];
+						Book b = books[i];
 						books[i] = books[i + 1];
 						books[i + 1] = b;
 					}
@@ -160,9 +160,12 @@ class Library {
 		// swap(arr, i, j)
 
 	public Book searchBookByTitle(String title) {
-		String index = Arrays.binarySearch(books, "자바");
-		
-		return 
+		for (int i = 0; i < top; i++) {
+			if (books[i].getTitle().indexOf(title) != -1) {
+				return books[i];
+			}
+		}
+		return null;
 
 	}
 }
@@ -197,7 +200,7 @@ public class 실습_C1_9장 {
 		// 도서 목록 출력
 		library.printBooks("\n제목 정렬전");
 		// 도서 목록 정렬
-	
+
 		library.sortBooksByTitle();
 		// 정렬된 도서 목록 출력
 		library.printBooks("\n제목 정렬후");
@@ -214,6 +217,6 @@ public class 실습_C1_9장 {
 		if (foundBook == null)
 			System.out.println("\n자바 책이 없다");
 		else
-			System.out.println("\n도서명으로 검색한 도서" + foundBook.toString());
+			System.out.println("\n도서명으로 검색한 도서 " + foundBook.toString());
 	}
 }

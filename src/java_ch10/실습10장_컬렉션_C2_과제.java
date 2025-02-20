@@ -7,6 +7,7 @@ package java_ch10;
  */
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 //interface Comparable{
 //	public int compareTo();// 추상메소드
@@ -26,6 +27,38 @@ class Book implements Comparable<Book> { // Comparable<Book> 제너릭이라는 
 		this.isbn = isbn;
 	}
 
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public int getPublicationYear() {
+		return publicationYear;
+	}
+
+	public void setPublicationYear(int publicationYear) {
+		this.publicationYear = publicationYear;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
 	@Override
 	public String toString() {
 		return String.format("도서명:\t%s\t저자:\t%s\t출판연도:\t%d\tISBN:\t%s", title, author, publicationYear, isbn);
@@ -38,50 +71,66 @@ class Book implements Comparable<Book> { // Comparable<Book> 제너릭이라는 
 
 }
 
+//Library class
 class Library {
 	static final int CAPACITY = 5; // 기본 용량을 5로 설정
 	private ArrayList<Book> books;
+	int top = 0;
 
 	public Library() {
 		books = new ArrayList<Book>(CAPACITY);
-		// int top =0;
+
+		
 	}
 
 	// 책 추가 (용량 초과 시 OverflowException 발생)
 	public void addBook(Book book) {
-		books.add(book);
+		if (books.size() >= CAPACITY) {
+			return;
+		}
 		// top++;
-		books.size();
-
+		
+		books.add(book);	
 	}
 
 	// 책 삭제 (빈 목록에서 삭제 시 UnderflowException 발생)
 	public Book removeBook() {
-		books.remove(0);
+		if (books.isEmpty()) {
+			return null;
+		}
+		return books.remove(0);
 
 	}
 
 	public void printBooks(String msg) {
-
+		System.out.println(msg);
+		for(Book books : books) {
+			System.out.println(books);
+		}
+		   System.out.println("-".repeat(60));
 	}
 
-//	public void sortBooksByTitle() {
-	//books.sort();//comparator 인터페이스 이해가 필요
-	//자료구조에서 반복함.
-	//배열 정렬ㄴ
-//		for()
-//			for() {
-//				swap();
-//			}
-//
-//	}
-//	
+	public void sortBooksByTitle() {
+		Collections.sort(books);
+		}
+	
+
+	// books.sort();//comparator 인터페이스 이해가 필요
+	// 자료구조에서 반복함.
+	
 
 	public void sortBooksByISBN() {
-
-	}
+		books.sort((b1, b2) -> b1.getIsbn().compareTo(b2.getIsbn()));
+    }
 
 	public Book searchBookByTitle(String title) {
+		 for (Book books : books) {
+	            if (books.getTitle().equals(title)) {
+	                return books;
+	            }
+	        }
+	        return null;
+	    }
 	
 }
 
@@ -132,12 +181,15 @@ public class 실습10장_컬렉션_C2_과제 {
 		String searchTitle = "자바";
 		// 정렬된 도서 목록 출력
 		Book foundBook = library.searchBookByTitle(searchTitle);
+		if (foundBook == null)
+			System.out.println("\n자바 책이 없다");
+		else
+			System.out.println("\n도서명으로 검색한 도서 ");
+		System.out.println(foundBook.toString()+"\n"+ "-".repeat(60));
+		
 
 		library.removeBook(); // 정상 삭제
-		library.removeBook(); // 정상 삭제
-		library.removeBook(); // 정상 삭제
-		library.removeBook(); // 정상 삭제
-		library.removeBook(); // 정상 삭제
+		
 		// 도서 목록 출력
 		library.printBooks("\n\n현재 도서 목록:");
 	}
