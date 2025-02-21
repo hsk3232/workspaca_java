@@ -111,7 +111,8 @@ class Library {
 	}
 
 	public void sortBooksByTitle() {
-		Collections.sort(books);
+		//Collections.sort(books);
+		books.sort(null);
 		}
 	
 
