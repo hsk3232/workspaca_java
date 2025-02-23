@@ -13,7 +13,7 @@ public class UserBean implements Serializable {
 	private String name;
 	private String tel;
 	private String address;
-	public void test {}
+	
 
 	public UserBean() {
 

@@ -10,9 +10,8 @@ public class Test03_실습대상 {
 
 	public static void main(String[] args) {
 //		FileInputStream fi = null;
-		 try(FileInputStream fi = new FileInputStream("a.txt"))
-		 {//try-catch-resources문
-		
+		try (FileInputStream fi = new FileInputStream("a.txt")) {// try-catch-resources문
+
 			int c = fi.read();
 			fi.read(null);
 			System.out.println((char) c);
@@ -21,20 +20,20 @@ public class Test03_실습대상 {
 //				try {
 //					fi.close();
 //				} catch (IOException e1) {
-					// TODO Auto-generated catch block
-//					e1.printStackTrace();
+//			
+//				//	e1.printStackTrace();
 //				}
-//			}
+			}
 			e.printStackTrace();
 			System.out.println(e.getMessage());
-		} finally {
-			if (fi != null) {
-				try {
-					fi.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+//		} finally { 
+//			if (fi != null) {  //fi가 지역변수라 오류남
+//				try {
+//					fi.close();
+//				} catch (IOException e) {
+//					e.printStackTrace();
+//				}
+//			}
 		}
 	}
 }

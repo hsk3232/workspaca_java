@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 //Overflow 예외 클래스
 class OverflowException extends RuntimeException { // 교재 553
+	
 
 }
 

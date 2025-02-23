@@ -27,8 +27,6 @@ public class Test01_실습대상 {
 		Stream<Integer> myStream = myList.stream();
 		myStream.forEach((n) -> System.out.print(n + " "));
 		System.out.println();
-		
-		myList.stream().filter(null).
 
 		Optional<Integer> minVal = myList.stream().min(Integer::compare);
 		System.out.println("최저 점수 : " + minVal.get());

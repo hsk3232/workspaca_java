@@ -1,6 +1,7 @@
 package java_ch14;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -27,7 +28,7 @@ public class 객체리스트정렬comparator_실습문제 {
 		for (int i = 0; i < data.size(); i++)
 			for (int j = i + 1; j < data.size(); j++) {
 				// if (data[i] < data[j] ) {//문제가 발생 :: 객체 비교가 안된다
-				// if (data[i].compareTo(data[j])>0) { //puablic Comparable<Student>
+				// if (data[i].compareTo(data[j])>0) { //public Comparable<Student4>
 				// if (Integer.parseInt(data[i].sno) > Integer.parseInt(data[j].sno)) {
 				if (comp.compare(data.get(i), data.get(j)) > 0) {
 					temp = data.get(i);
@@ -82,7 +83,7 @@ public class 객체리스트정렬comparator_실습문제 {
 		
 		
 		
-		Arrays.sort(data, (s1, s2) -> {
+		Collections.sort(al, (s1, s2) -> {
 				if (s1.sno.compareTo(s2.sno) < 0)
 					return -1;
 				else if (s1.sno.compareTo(s2.sno) > 0)

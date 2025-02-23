@@ -10,7 +10,6 @@ package java_ch14;
  *   }   
  */
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 
 
@@ -65,9 +64,9 @@ public class 객체배열정렬comparator_실습문제 {
 			//Collections.sort(data, compName);
 
 		Arrays.sort(data, (s1, s2) -> {
-			if (s1.sno.compareTo(s2.sno) < 0)
+			if (s1.sname.compareTo(s2.sname) < 0)
 				return -1;
-			else if (s1.sno.compareTo(s2.sno) > 0)
+			else if (s1.sname.compareTo(s2.sname) > 0)
 				return 1;
 			else
 				return 0;
