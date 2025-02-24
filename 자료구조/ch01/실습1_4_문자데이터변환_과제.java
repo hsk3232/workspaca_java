@@ -11,13 +11,23 @@ public class 실습1_4_문자데이터변환_과제 {
     public static String[] convertValuesToString(boolean b, char c, double d, int i, float f) {
     	String[] st = {String.valueOf(b), String.valueOf(c), String.valueOf(d), String.valueOf(i), String.valueOf(f)};
     	
-    	 // 배열을 정렬하는 함수
-    	Arrays.sort(st);
-    	
     	return st;
-    }
+    }  
+    
+    // 배열을 정렬하는 함수
+    private static void sortStringArray(String[] stringArray) {
+		sort
+    	System.out.println();		
+	}
+
 
     // 배열을 출력하는 함수
+
+	private static void showAllString(String[] stringArray) {
+		
+		
+	}
+    
     
     public static void main(String[] args) {
         // 정수, float, double, boolean 값을 문자열로 변환하여 배열에 저장
@@ -34,5 +44,7 @@ public class 실습1_4_문자데이터변환_과제 {
         System.out.println("\n정렬후:");
         showAllString(stringArray);
     }
+
+	
 }
 
