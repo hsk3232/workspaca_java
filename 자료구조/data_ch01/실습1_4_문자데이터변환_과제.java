@@ -1,4 +1,4 @@
-package ch01;
+package data_ch01;
 
 import java.util.Arrays;
 
@@ -10,8 +10,8 @@ public class 실습1_4_문자데이터변환_과제 {
     // 값을 문자열로 변환하여 배열에 저장하는 함수
     public static String[] convertValuesToString(boolean b, char c, double d, int i, float f) {
     	String[] st = {String.valueOf(b), String.valueOf(c), String.valueOf(d), String.valueOf(i), String.valueOf(f)};
-    	
-    	return sortStringArray(st);
+    		
+    	return st;
     }  
     
     // 배열을 정렬하는 함수
@@ -24,10 +24,7 @@ public class 실습1_4_문자데이터변환_과제 {
     // 배열을 출력하는 함수
 
 	private static void showAllString(String[] stringArray) {
-		for(String arr : stringArray) {
-			System.out.println(arr);
-		}
-		
+		System.out.println(Arrays.toString(stringArray));
 	}
     
     

@@ -1,4 +1,4 @@
-package ch01;
+package data_ch01;
 
 /*
  * PCCP 코딩 시험에서 스트링에 대한 기본 함수 사용 숙달이 필요하다

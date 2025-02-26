@@ -1,4 +1,4 @@
-package ch01;
+package data_ch01;
 
 public class 실습1_2문자열교체_과제 {
 
