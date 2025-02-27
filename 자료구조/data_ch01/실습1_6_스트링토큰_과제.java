@@ -9,6 +9,14 @@ public class 실습1_6_스트링토큰_과제 {
 	 * parseDouble(stringArray[i])
 	 */
 	// 문자열을 실수로 추출하여 배열에 저장하고 정렬하는 함수
+//	int count = 0;
+//	while (st.hasMoreTokens()) {
+//		arr[count++]= st.nextToken();
+//	}
+//	 
+
+	
+	
 	public static String[] extractSortStrings(String msg) {
 		StringTokenizer st = new StringTokenizer(msg);
 		String[] arr = new String[st.countTokens()];
