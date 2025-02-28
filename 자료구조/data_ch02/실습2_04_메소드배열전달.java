@@ -50,13 +50,11 @@ public class 실습2_04_메소드배열전달 {
 	}
 
 	public static int[] reverse(int[] data) {
-			int[] st = new int[data.length];
+		int[] st = new int[data.length];
 		for (int i = 0; i < data.length; i++) { 
-//			for (int j = data.length-1; j > 0; j--) {
-//				st[i] = data[j];
-				st[i] = data[data.length - 1 - i];
-				
-			}	return st;
+				st[i] = data[data.length-i-1];
+		}	
+		return st;
 	}
 
 	public static void main(String[] args) {
