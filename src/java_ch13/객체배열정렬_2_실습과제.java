@@ -37,9 +37,10 @@ class SnameComparator implements Comparator<Student3> {
 public class 객체배열정렬_2_실습과제 {
 
 	static void swap(Student3[] data, int i, int j) {
-		
+		Student3 st = data[i]; data[i]=data[j]; data[j]=st;
 	}
 	static void sortStudent(Student3[]data) {//자바 과목에서는 어렵다 
+		
 
 	}
 	

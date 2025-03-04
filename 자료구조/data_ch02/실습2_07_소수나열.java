@@ -1,6 +1,5 @@
 package data_ch02;
 
-package data_ch02;
 
 
 /*

@@ -11,6 +11,7 @@ class Student2 implements Comparable<Student2>{
 		this.sno = sno;
 		this.sname = sname;
 	}
+
 	
 	@Override //Comparable 사용하려면 추상메서드 선언을 해야 함으로 Override 해야 함.
 	public int compareTo(Student2 s2) {
@@ -25,7 +26,9 @@ class Student2 implements Comparable<Student2>{
 public class 객체배열정렬_1_실습과제 {
 
 	static void swap(Student2[] data, int i, int j) {
-		
+		Student2 t = data[i];
+		data[i] = data[j];
+		data[j] = t;
 	}
 	static void sortStudent(Student2[]data) {//자바 과목에서는 어렵다
 		//Arrays.sort(data);
