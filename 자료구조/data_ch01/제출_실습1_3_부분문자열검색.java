@@ -13,22 +13,27 @@ import java.util.List;
  */
 public class 제출_실습1_3_부분문자열검색 {
 	public static void searchSubstring(String text, String pattern) {
-		List<Integer> result = new ArrayList<Integer>();
-		for (int i = 0; i <= text.length() - pattern.length(); i++) {
-			int j;
-			for (j = 0; j < pattern.length(); j++) {
-				if (text.charAt(i + j) != pattern.charAt(j)) {
-					break;
-				}
-			}
-			if (j == pattern.length()) {
-				result.add(i);
-			}
-		}
-		System.out.println(result);
-
+//		List<Integer> result = new ArrayList<Integer>();
+//		for (int i = 0; i <= text.length() - pattern.length(); i++) {
+//			int j;
+//			for (j = 0; j < pattern.length(); j++) {
+//				if (text.charAt(i + j) != pattern.charAt(j)) {
+//					break;
+//				}
+//			}
+//			if (j == pattern.length()) {
+//				result.add(i);
+//			}
+//		}
+//		System.out.println(result);
+//
+//	}
+		System.out.print("[" + text.indexOf(pattern)+  ", ");
+		System.out.println(text.lastIndexOf(pattern)+ "]");
+	
 	}
-
+		
+		
 	public static void main(String[] args) {
 		String text = "ababcabcabababd";
 		String pattern = "ababd";

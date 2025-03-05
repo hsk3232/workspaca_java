@@ -53,8 +53,8 @@ class PhyscData implements Comparable<PhyscData> {
 		return name.compareTo(p.name);
 	}
 
+	
 	public boolean equals(Object ob) {// Object 클래스 상속
-
 		PhyscData p = (PhyscData) ob;
 		if (this.name.compareTo(p.name) > 0) {
 			return false;
