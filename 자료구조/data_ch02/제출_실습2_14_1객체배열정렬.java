@@ -50,16 +50,20 @@ class PhyscData implements Comparable<PhyscData> {
 	// 스트링만 비교하기 위해 만든 함수이다.
 	@Override
 	public int compareTo(PhyscData p) {
-		return name.compareTo(p.name);
+		if(name.compareTo(p.name) != 0) {
+			}return 
+			
+		return ; //비교문을 더 넣어라.
 	}
 
 	
 	public boolean equals(Object ob) {// Object 클래스 상속
-		PhyscData p = (PhyscData) ob;
-		if (this.name.compareTo(p.name) > 0) {
-			return false;
-		} else if (this.name.compareTo(p.name) < 0) {
-			return false;
+		if(this == ob)  // 작은 것부터 시작.			
+		 return true;
+		if (!(ob instanceof PhyscData)) {
+			return true;
+		} else if (this.name.compareTo(name) < 0) {
+			return true;
 		}
 		return true;
 
@@ -164,7 +168,7 @@ public class 제출_실습2_14_1객체배열정렬 {
 
 		PhyscData[] newData = insertObject(data, new PhyscData("소주다", 179, 1.5));// 배열의 사이즈를 1개 증가시킨후 insert되는 객체 보다 큰
 																					// 값들은 우측으로 이동, 사이즈가 증가된 객체 배열을 리턴
-		showData("삽입후", newData);
+		showData("삽입후 \n", newData);
 
 	}
 

@@ -93,11 +93,11 @@ public class 실습2_05_정수배열정렬 {
 		inputData(data);
 		showData("난수 입력", data);
 
-		reverse(data);// 역순으로 재배치 - 정렬 아님
-		showData("역순 재배치", data);
-
 		sortData(data);
 		showData("정렬후", data);
+		
+		reverse(data);// 역순으로 재배치 - 정렬 아님
+		showData("역순 재배치", data);
 
 		reverseSort(data);// 역순으로 정렬
 		showData("역순 정렬후", data);
