@@ -26,6 +26,7 @@ class IntStack4 {
 //--- 실행시 예외 클래스 쓰는 연습!: 스택이 비어있음 ---//
 	public class EmptyIntStackException extends RuntimeException {
 //추가
+		
 	}
 
 //--- 실행시 예외: 스택이 가득 참 ---//

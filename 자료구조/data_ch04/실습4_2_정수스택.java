@@ -15,19 +15,19 @@ class IntStack3 {
 	private int[] stk; // 스택용 배열
 	private int capacity; // 스택의 크기
 	private int top; // 스택 포인터
-	public IntStack3(int size) {
-		try {
-			stk = new int[size];
-			
-		}catch(OutOfMemoryErr x) {
-			capacity = 0;
-			x.printStackTrace();
-		}
-		
-		capacity = size;
-		top=0;
-		
-	}
+//	public IntStack3(int size) {
+//		try {
+//			stk = new int[size];
+//			
+//		}catch(OutOfMemoryErr x) {
+//			capacity = 0;
+//			x.printStackTrace();
+//		}
+//		
+//		capacity = size;
+//		top=0;
+//		
+//	}
 
 	//--- 실행시 예외: 스택이 비어있음 ---//
 	@SuppressWarnings("serial")
@@ -37,15 +37,15 @@ class IntStack3 {
 			super(msg);
 		}
 	}
-	/*
-	public class RuntimeException extends Exception {
-	    // 생성자 중 하나: 메시지를 받는 생성자
-	    public RuntimeException(String message) {
-	        // 부모 클래스인 Throwable 클래스의 생성자 호출
-	        super(message);
-	    }
-	}
-	*/
+	
+//	public class RuntimeException extends Exception {
+//	    // 생성자 중 하나: 메시지를 받는 생성자
+//	    public RuntimeException(String message) {
+//	        // 부모 클래스인 Throwable 클래스의 생성자 호출
+//	        super(message);
+//	    }
+//	}
+	
 	//--- 실행시 예외: 스택이 가득 참 ---//
 	@SuppressWarnings("serial")
 	public class OverflowIntStackException extends RuntimeException {
@@ -61,7 +61,17 @@ class IntStack3 {
 	*/
 //--- 생성자(constructor) ---//
 	public IntStack3(int maxlen) {
-
+		capacity = maxlen;
+		top=0;
+		try {
+			stk = new int[maxlen];
+			
+		}catch(OutOfMemoryError x) {
+			capacity = 0;
+			x.printStackTrace();
+		}
+		
+		
 	}
 
 //--- 스택에 x를 푸시 ---//
@@ -77,32 +87,44 @@ class IntStack3 {
 //--- 스택에서 데이터를 팝(정상에 있는 데이터를 꺼냄) ---//
 	public int pop() throws EmptyIntStackException {
 		//추가
-		
+		if(top <=0)
+			throw new EmptyIntStackException("pop: stack top");
+		return stk[--top];
 	}
 
 //--- 스택에서 데이터를 피크(peek, 정상에 있는 데이터를 들여다봄) ---//
 	public int peek() throws EmptyIntStackException {
 //추가
+		if(top <= 0)
+			throw new EmptyIntStackException("peek: stack top");
+		return stk[top-1];
 	}
 
 //--- 스택을 비움 ---//
 	public void clear() {
-//추가
+	//추가
+		top = 0;
 	}
 
 //--- 스택에서 x를 찾아 인덱스(없으면 –1)를 반환 ---//
 	public int indexOf(int x) {
 //추가
+		for(int i = top-1; i >= 0; i--)
+			if(stk[i] == x)
+				return i;
+		return -1;
 	}
 
 //--- 스택의 크기를 반환 ---//
 	public int getCapacity() {
 //추가
+		return capacity;
 	}
 
 //--- 스택에 쌓여있는 데이터 갯수를 반환 ---//
-	public int size() {
-//추가
+	public int size(){
+//추가		
+		return top;
 	}
 
 //--- 스택이 비어있는가? ---//
