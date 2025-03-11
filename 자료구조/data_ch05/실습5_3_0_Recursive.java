@@ -1,6 +1,5 @@
 package data_ch05;
 
-package Chap5_Recursive;
 /*
  * //실습 5-5  재귀 알고리즘
  * 재귀에 대한 이해를 돕는 순수 재귀 메서드 - 직접 입력하여 학습

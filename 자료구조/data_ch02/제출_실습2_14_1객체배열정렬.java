@@ -50,10 +50,13 @@ class PhyscData implements Comparable<PhyscData> {
 	// 스트링만 비교하기 위해 만든 함수이다.
 	@Override
 	public int compareTo(PhyscData p) {
-		if(name.compareTo(p.name) != 0) {
-			}return 
-			
-		return ; //비교문을 더 넣어라.
+		int a = name.compareTo(p.name);
+		if(a == 0) {
+			a = Integer.compare(height, p.height);
+		} else if(a == 0) {
+			a = Double.compare(vision, p.vision);
+		}
+		return a; //비교문을 더 넣어라.
 	}
 
 	

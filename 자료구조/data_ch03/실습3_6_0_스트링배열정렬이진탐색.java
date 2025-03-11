@@ -13,7 +13,6 @@ public class 실습3_6_0_스트링배열정렬이진탐색 {
 	private static void showData(String msg, String[] data) {
 		System.out.println(msg);
 		System.out.println(Arrays.toString(data));
-		System.out.println();
 	}
 
 	private static void swap(String[] arr, int a, int b) {
@@ -25,17 +24,17 @@ public class 실습3_6_0_스트링배열정렬이진탐색 {
 	// 올림차순으로 정렬 교재211-212 단순 선택 정렬 알고리즘으로 구현
 	private static void sortData(String[] data) {
 		int start = 0;
-		int last = data.length - 1;
-		while(start < last) {
+		while(start < data.length - 1) {
+			int last = data.length - 1;
 			for (int i = last; i > start; i--) {
 				if (data[i-1].compareTo(data[i]) > 0) {
 					swap(data, i - 1, i);
 					last = i;
 				}
-			
-
+				
 			}
-		}	start = last;
+			start = last;
+		}	
 	}
 
 	// 교재 100 페이지 선형검색 seqSearch() 함수로 구현
@@ -65,10 +64,9 @@ public class 실습3_6_0_스트링배열정렬이진탐색 {
 		// 인덱스 맨 끝
 		int last = data.length - 1;
 
-		// 인덱스 중앙
-		int mid = (start + last) / 2;
-
 		do {
+			// 인덱스 중앙
+			int mid = (start + last) / 2;
 			if (data[mid] == key) {
 				return mid;
 			}
@@ -88,7 +86,7 @@ public class 실습3_6_0_스트링배열정렬이진탐색 {
 		String[] data = { "사과", "포도", "복숭아", "감", "산딸기", "블루베리", "대추", "수박", "참외" };
 		showData("정렬전", data);
 		sortData(data);//
-		showData("정렬후", data);
+		showData("\n정렬후", data);
 
 		String key = "포도";
 		int resultIndex = linearSearch(data, key);

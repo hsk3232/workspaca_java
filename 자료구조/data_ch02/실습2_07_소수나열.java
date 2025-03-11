@@ -1,7 +1,5 @@
 package data_ch02;
 
-
-
 /*
  * 어떤 정수를 나누어 떨어지게 만드는 수를 약수(divisor)
  * N % d == 0을 만족하는 d를 N의 약수
@@ -16,12 +14,16 @@ package data_ch02;
 public class 실습2_07_소수나열 {
     // 0 이상 n 이하의 소수 개수를 반환하는 함수
     static int primeCount(int n, int []data) {
-
+    	
+    	return data.length;
     }
 
     // 소수 판별 함수
     static boolean isPrime(int num) {
-
+    	if(num%(num/2) !=0 || num%(num/3) !=0) {
+    			
+    		}
+    	
     }
     // 최대 공약수(GCD) 계산 함수 (유클리드 호제법 사용)
     /*
@@ -35,7 +37,13 @@ public class 실습2_07_소수나열 {
      * 42 % 14 = 0 → GCD(14, 0), 즉 최대 공약수는 14.
      */
     public static int gcd(int a, int b) {
-
+    	while(a == 0) {
+    		int c = a % b;
+        	a = b % c;
+    	} return b;
+    	
+    	
+    	
     }
     // 최소 공배수(LCM) 계산 함수
     /*
