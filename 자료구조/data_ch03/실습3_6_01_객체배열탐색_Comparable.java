@@ -127,13 +127,17 @@ public class 실습3_6_01_객체배열탐색_Comparable {
 	// compareTo()를 사용하여 key 검색 구현
 	private static int binarySearch(PhyscData2[] data, PhyscData2 key) {
 		int start = 0;
-		int last = data.length;
+		int last = data.length-1;
 		do {
 			int mid = (start + last) / 2;
 			if(data[mid].compareTo(key) > 0) {
 				last = mid - 1;
-			} if else(data[mid])
-		}
+			} else if(data[mid].compareTo(key) < 0) {
+				start = mid + 1;
+			}else {
+				return mid;	
+			}
+		} while(start<=last);
 		
 		return -1;
 	}
@@ -162,7 +166,7 @@ public class 실습3_6_01_객체배열탐색_Comparable {
 		/*
 		 * 교재 109~113
 		 */
-//		resultIndex = binarySearch(data, key);// compareTo()를 사용하여 구현
+		resultIndex = binarySearch(data, key);// compareTo()를 사용하여 구현
 		System.out.println("\nbinarySearch(<박동,167,0.6>): result index = " + resultIndex);
 		key = new PhyscData2("나동", 164, 0.6);
 		/*

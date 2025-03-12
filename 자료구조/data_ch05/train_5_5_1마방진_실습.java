@@ -1,4 +1,7 @@
 package data_ch05;
+
+import java.util.Arrays;
+
 /*
  * 마방진: 마법 magic + 정방형 배열 + 배치 진열의 진 > 숫자를 특이하게 배열하여 모든 방향의 합이 일정
  * **매직 스퀘어(Magic Square)**는 n×n 크기의 정사각형 배열에 숫자를 배치하되, 
@@ -22,27 +25,68 @@ public class train_5_5_1마방진_실습 {
  */
         // 마방진 생성 알고리즘 (루벤스의 방법)
         int row = 0, col = n / 2; // 시작 위치
-        for (int num = 1; num <= n * n; num++) {
-            magicSquare[row][col] = num; // 현재 위치에 숫자 배치
+        
+        for (int num = 1; num <= n * n; num++)
+        	magicSquare[row][col] = num;
+        	
+        	if(magicSquare[row][col] == 0) {
+        		if(row == -1 && col>=n-1) {
+            		row = n-1;
+            		col = 0;
+            		
+            	} magicSquare[row - 1][col + 1] = num;
+            	row++;
+            	col++;
+            
+        	}else magicSquare[row - 1][col] = num;
+        	 // 현재 위치에 숫자 배치
             //구현
+        	
+        	
+        	
+         	System.out.println(magicSquare);
         }
+     
+        
+        
 
         // 마방진 출력
-        showSquare(magicSquare);
+//        showSquare(magicSquare);
 
         // 마방진의 합 확인
         int magicSum = n * (n * n + 1) / 2;
-        System.out.println("가로, 세로, 대각선의 합 =  " + magicSum );
+//        System.out.println("가로, 세로, 대각선의 합 =  " + magicSum );
         System.out.println("마방진 검사 = " + checkSquare(magicSquare, magicSum));
     }
 
     // 마방진 출력 메서드
     static void showSquare(int[][] magicSquare) {
     	//구현
+    	for(int i=0; i<magicSquare.length; i++)
+    		for(int j=0; j<magicSquare.length; j++)
+    			System.out.println(magicSquare[i][j] + "\t");
     }
 
     // 마방진 유효성 검증 메서드
-    static boolean checkSquare(int[][] magicSquare, int magicSum) {
+    static boolean checkSquare(int[][] magicSquare, int sum) {
     	// 구현 
+    	int sum1 = sum;
+    	int sum2 = sum;
+    	int sum3 = sum;
+    	
+    	for(int i = 0; i <magicSquare.length; i++)
+    		for(int j = magicSquare.length-1; j>magicSquare.length; j--) {
+    			sum1 += magicSquare[j][j];
+    			sum2 += magicSquare[j][i];
+    			if(sum1 == sum && sum2 == sum && sum1 == sum2) {
+    				sum3 += magicSquare[i][i];
+    				if(sum3 == sum) {
+    					return true;
+    					
+    				}
+    				
+    			}
+    		}
+    		return false;
     }
 }

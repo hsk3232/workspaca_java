@@ -36,15 +36,19 @@ public class 실습2_07_소수나열 {
      * 56 % 42 = 14 → GCD(42, 14)
      * 42 % 14 = 0 → GCD(14, 0), 즉 최대 공약수는 14.
      */
-    public static int gcd(int a, int b) {
-    	while(a == 0) {
-    		int c = a % b;
-        	a = b % c;
-    	} return b;
+    public static int gcd(int x, int y) {
+    	while (y != 0) {
+            int temp = y;
+            y = x % y; // 나머지 계산
+            x = temp;  // x를 이전 y로 업데이트
+        }
+    	return Math.abs(x);
+        
+    	} 
     	
     	
     	
-    }
+    
     // 최소 공배수(LCM) 계산 함수
     /*
      * GCD(최대 공약수)와의 관계

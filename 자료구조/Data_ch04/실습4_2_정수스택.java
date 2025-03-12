@@ -1,4 +1,4 @@
-package data_ch04;
+package Data_ch04;
 
 /*
  * 실습 4_1번 - 정수 배열 스택
