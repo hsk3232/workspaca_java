@@ -11,7 +11,7 @@ import java.util.Arrays;
  */
 public class train_5_5_1마방진_실습 {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
         int n = 3; // 마방진의 크기
         int[][] magicSquare = new int[n][n];
 /*
@@ -25,68 +25,82 @@ public class train_5_5_1마방진_실습 {
  */
         // 마방진 생성 알고리즘 (루벤스의 방법)
         int row = 0, col = n / 2; // 시작 위치
-        
-        for (int num = 1; num <= n * n; num++)
+        for (int num = 1; num <= n * n; num++) {
+        	// 현재 위치에 숫자 배치
         	magicSquare[row][col] = num;
-        	
-        	if(magicSquare[row][col] == 0) {
-        		if(row == -1 && col>=n-1) {
-            		row = n-1;
-            		col = 0;
-            		
-            	} magicSquare[row - 1][col + 1] = num;
-            	row++;
-            	col++;
-            
-        	}else magicSquare[row - 1][col] = num;
-        	 // 현재 위치에 숫자 배치
-            //구현
-        	
-        	
-        	
-         	System.out.println(magicSquare);
+        
+        
+        int newRow = row - 1;  // 북쪽(위)
+        int newCol = col + 1;  // 동쪽(오른쪽)
+
+        // 경계를 벗어나면 반대쪽으로 이동
+        if (newRow < 0) newRow = n - 1;  // 맨 위로 가면 맨 아래로 이동
+        if (newCol >= n) newCol = 0;     // 맨 오른쪽을 넘어가면 맨 왼쪽으로 이동
+
+        // 이미 숫자가 있는 경우, 아래쪽(↓)으로 이동
+        if (magicSquare[newRow][newCol] != 0) {
+            newRow = row + 1;
+            newCol = col;
         }
-     
-        
-        
 
-        // 마방진 출력
-//        showSquare(magicSquare);
+        row = newRow;
+        col = newCol;
+        }
+        
+		// 마방진 출력
+			showSquare(magicSquare);
 
+        
         // 마방진의 합 확인
         int magicSum = n * (n * n + 1) / 2;
-//        System.out.println("가로, 세로, 대각선의 합 =  " + magicSum );
+        System.out.println("가로, 세로, 대각선의 합 =  " + magicSum );
         System.out.println("마방진 검사 = " + checkSquare(magicSquare, magicSum));
-    }
+	}
+    
 
-    // 마방진 출력 메서드
-    static void showSquare(int[][] magicSquare) {
-    	//구현
-    	for(int i=0; i<magicSquare.length; i++)
-    		for(int j=0; j<magicSquare.length; j++)
-    			System.out.println(magicSquare[i][j] + "\t");
-    }
-
-    // 마방진 유효성 검증 메서드
-    static boolean checkSquare(int[][] magicSquare, int sum) {
-    	// 구현 
-    	int sum1 = sum;
-    	int sum2 = sum;
-    	int sum3 = sum;
-    	
-    	for(int i = 0; i <magicSquare.length; i++)
-    		for(int j = magicSquare.length-1; j>magicSquare.length; j--) {
-    			sum1 += magicSquare[j][j];
-    			sum2 += magicSquare[j][i];
-    			if(sum1 == sum && sum2 == sum && sum1 == sum2) {
-    				sum3 += magicSquare[i][i];
-    				if(sum3 == sum) {
-    					return true;
-    					
-    				}
-    				
-    			}
+     // 마방진 출력 메서드
+        static void showSquare(int[][] magicSquare) {
+        	//구현
+//        	for(int i=0; i<magicSquare.length; i++)
+//        		for(int j=0; j<magicSquare.length; j++)
+//        			System.out.println(magicSquare[i][j] + "\t");
+        	
+        	for (int[] num : magicSquare) {
+    			System.out.println(Arrays.toString(num));
     		}
-    		return false;
-    }
+    		System.out.println();
+        }
+        
+        
+
+        // 마방진 유효성 검증 메서드
+        static boolean checkSquare(int[][] magicSquare, int magicSum) {
+        	// 구현 
+        	int n = magicSquare.length;
+        	int sum1 = 0;
+        	int sum2 = 0;
+        	int sum3 = 0;
+        	int sum4 = 0;
+        	
+        	for(int i = 0; i<n; i++) 
+	    		for(int j = 0; j <n; j++) {
+	    			sum3 += magicSquare[i][j];
+	    			sum4 += magicSquare[j][i];
+	    		}
+	    		if(magicSum != sum3 || sum3 != sum4) {
+	    			return false;
+	    			}
+	    		
+	    	for(int i = 0; i<n; i++) {
+	    		sum1 += magicSquare[i][i];
+	    		sum2 += magicSquare[i][n-i-1];
+	    		if(magicSum != sum1 || sum2 != sum1)
+	    			return false;
+	    	}
+    	    	return true;
+    	    	
+        }			
+    	
+     	 
+    
 }
