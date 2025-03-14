@@ -133,7 +133,7 @@ class Queue4 {
 
 }
 
-public class 실습4_4_정수선형큐_리스트 {
+public class 실습4_4정수선형큐_리스트 {
 	public static void main(String[] args) {
 		Scanner stdIn = new Scanner(System.in);
 		Queue4 oq = new Queue4(4); // 최대 64개를 인큐할 수 있는 큐

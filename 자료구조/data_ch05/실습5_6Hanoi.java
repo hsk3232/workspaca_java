@@ -1,4 +1,4 @@
-package Chap5_Recursive;
+package data_ch05;
 /*
  * 실습 5-8: 하노이의 탑
  * 일본 수학 퀴즈 문제: 5개의 선반을 모두 이동하는 데 몇번 만에 이동하나?

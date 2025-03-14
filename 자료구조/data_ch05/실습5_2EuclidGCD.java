@@ -1,4 +1,4 @@
-package Chap5_Recursive;
+package data_ch05;
 /*
  * 실습 5-4: 유클리드 호제법으로 최대공약수를 구함
  * 위키백과: 유클리드 호제법 학습

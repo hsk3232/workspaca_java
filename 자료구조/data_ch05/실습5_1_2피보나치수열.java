@@ -1,4 +1,4 @@
-package Chap5_Recursive;
+package data_ch05;
 
 /*
  * 실습 5-3: 피보나치 수열을 간결한 코딩으로 해결

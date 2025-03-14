@@ -148,7 +148,7 @@ class IntStack4 {
 	}
 }
 
-public class 실습4_3_정수스택리스트 {
+public class 실습4_2정수스택_리스트 {
 
 	public static void main(String[] args) {
 		Scanner stdIn = new Scanner(System.in);

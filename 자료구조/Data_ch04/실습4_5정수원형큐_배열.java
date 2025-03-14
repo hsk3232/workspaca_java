@@ -1,5 +1,9 @@
 package Data_ch04;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Random;
+import Data_ch04.IntQueue3.EmptyIntQueue3Exception;
+import Data_ch04.IntQueue3.OverflowIntQueue3Exception;
 
 /*
  * 실습 4_5번 - 정수 배열 원형 큐
@@ -10,55 +14,60 @@ import java.util.ArrayList;
  * 큐에서는 예외 클래스를 만드는 연습
  */
  
-import java.util.Random;
+
 /*
  * 큐 1번 실습 코드 - 정수들의 큐
  */
-import java.util.Scanner;
 
-import Data_ch04.IntQueue3.EmptyIntQueue3Exception;
-import Data_ch04.IntQueue3.OverflowIntQueue3Exception;
 
 //int형 고정 길이 큐
-
-
 class IntQueue3 {
 	private ArrayList<Integer> que; // 큐용 배열
 	private int capacity; // 큐의 크기
 	private int front; // 맨 처음 요소 커서
 	private int rear; // 맨 끝 요소 커서
 	boolean isEmptyTag;
+	private int num;
 	//private int num; // 현재 데이터 개수>> 삭제한 후에 queue가 full, empty를 구분하는 실습
 	//enque 하기전에 갯수를 세어 front==rear 조건을 체크한다
 	//deque도 마찬가지임 
 	
 //--- 실행시 예외: 큐가 비어있음 ---//
+	
+	@SuppressWarnings("serial")
 	public class EmptyIntQueue3Exception extends RuntimeException {
-		public EmptyIntQueue3Exception() {
-		}
+		public EmptyIntQueue3Exception(String msg) {
+			super(msg);
+	}
 	}
 
 //--- 실행시 예외: 큐가 가득 찼음 ---//
+
+	@SuppressWarnings("serial")
 	public class OverflowIntQueue3Exception extends RuntimeException {
-		public OverflowIntQueue3Exception() {
-			
+		public OverflowIntQueue3Exception(String msg) {
+			super(msg);
+	}
 		}
 	}
 
 //--- 생성자(constructor) ---//
 	public IntQueue3(int maxlen) {
-		que = new int[maxlen];
-		front=rear = 0;
+		int[] que = new int[maxlen];
+		num = front = rear = 0;
 		isEmptyTag = true;
 	}
 
 //--- 큐에 데이터를 인큐 ---//
 	public boolean enque(int x) throws OverflowIntQueue3Exception {
-		if(isFull()) {
+		if(isFull())
 			throw new OverflowIntQueue3Exception("enque full");
-		} 
 		que[rear++] = x;
+		num++;
+		
 		isEmptyTag = false;
+		
+			
 		return true;
 		
 	}
@@ -79,11 +88,15 @@ class IntQueue3 {
 		 * queue을 empty로 만들어야 한다.
 		 * queue이 empty일 때 clear()가 호출된 예외 발생해야 한다 
 		 */
+		
+		if(!que.isEmpty()) {
+			que.removeAll(null);
+		}else throw new EmptyIntQueue3Exception("삭제할 데이터가 없습니다.");
 	}
 
 //--- 큐에서 x를 검색하여 인덱스(찾지 못하면 –1)를 반환 ---//
 	public int indexOf(int x) {
-
+		for(int i = 0; i<)
 	}
 
 //--- 큐의 크기를 반환 ---//
@@ -104,15 +117,18 @@ class IntQueue3 {
 
 //--- 큐가 가득 찼는가? ---//
 	public boolean isFull() {
-		if(!isEmptyTag){
-			return front ==rear;	
+		if(front == rear){
+			return true;	
 		} return false;
 	}
 
 //--- 큐 안의 모든 데이터를 프런트 → 리어 순으로 출력 ---//
-	public void dump() {
-
-	}
+	public void dump()  {
+		
+		if(que.isEmpty()) {
+			System.out.println("출력할 데이터가 없습니다.");
+			}else 
+				System.out.println(que.toString());
 }
 public class 실습4_5_정수원형큐리스트 {
 	public static void main(String[] args) {

@@ -94,7 +94,7 @@ public objectQueue2(int maxlen) {
 
 	}
 }
-public class 실습4_6_객체선형큐_배열 {
+public class 실습4_6객체선형큐_배열 {
 	public static void main(String[] args) {
 		Scanner stdIn = new Scanner(System.in);
 		objectQueue2 oq = new objectQueue2(4); // 최대 64개를 인큐할 수 있는 큐

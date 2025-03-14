@@ -82,22 +82,26 @@ public class train_5_5_1마방진_실습 {
         	int sum3 = 0;
         	int sum4 = 0;
         	
-        	for(int i = 0; i<n; i++) 
+        	for(int i = 0; i<n; i++) {
 	    		for(int j = 0; j <n; j++) {
 	    			sum3 += magicSquare[i][j];
-	    			sum4 += magicSquare[j][i];
+	    			sum4 = magicSquare[j][i];
 	    		}
-	    		if(magicSum != sum3 || sum3 != sum4) {
+	    		if(magicSum != sum3 || magicSum != sum4) {
 	    			return false;
 	    			}
+	    		sum3 = 0;
+	        	sum4 = 0;	
+        	}
 	    		
 	    	for(int i = 0; i<n; i++) {
 	    		sum1 += magicSquare[i][i];
 	    		sum2 += magicSquare[i][n-i-1];
-	    		if(magicSum != sum1 || sum2 != sum1)
-	    			return false;
-	    	}
+	    		
+	    			
+	    	}if(magicSum == sum1 && sum2 == sum1)
     	    	return true;
+	    	return false;
     	    	
         }			
     	

@@ -1,4 +1,4 @@
-package Chap5_Recursive;
+package data_ch05;
 /*
  * 실습 5-7: stack을 이용한 non-recursive 코드로 구현
  * 정수 스택을 사용한 non-recursive 코드 구현
@@ -13,12 +13,14 @@ class IntStack {
 	private int top; // 스택 포인터
 
 	// --- 실행시 예외 : 스택이 비어있음 ---//
+	@SuppressWarnings("serial")
 	public class EmptyIntStackException extends RuntimeException {
 		public EmptyIntStackException() {
 		}
 	}
 
 	// --- 실행시 예외 : 스택이 가득 참 ---//
+	@SuppressWarnings("serial")
 	public class OverflowIntStackException extends RuntimeException {
 		public OverflowIntStackException() {
 		}

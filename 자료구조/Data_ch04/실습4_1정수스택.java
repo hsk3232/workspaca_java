@@ -15,19 +15,8 @@ class IntStack3 {
 	private int[] stk; // 스택용 배열
 	private int capacity; // 스택의 크기
 	private int top; // 스택 포인터
-//	public IntStack3(int size) {
-//		try {
-//			stk = new int[size];
-//			
-//		}catch(OutOfMemoryErr x) {
-//			capacity = 0;
-//			x.printStackTrace();
-//		}
-//		
-//		capacity = size;
-//		top=0;
-//		
-//	}
+	
+	
 
 	//--- 실행시 예외: 스택이 비어있음 ---//
 	@SuppressWarnings("serial")
@@ -38,13 +27,14 @@ class IntStack3 {
 		}
 	}
 	
-//	public class RuntimeException extends Exception {
-//	    // 생성자 중 하나: 메시지를 받는 생성자
-//	    public RuntimeException(String message) {
-//	        // 부모 클래스인 Throwable 클래스의 생성자 호출
-//	        super(message);
-//	    }
-//	}
+	@SuppressWarnings("serial")
+	public class RuntimeException extends Exception {
+	    // 생성자 중 하나: 메시지를 받는 생성자
+	    public RuntimeException(String message) {
+	        // 부모 클래스인 Throwable 클래스의 생성자 호출
+	        super(message);
+	    }
+	}
 	
 	//--- 실행시 예외: 스택이 가득 참 ---//
 	@SuppressWarnings("serial")
@@ -70,9 +60,22 @@ class IntStack3 {
 			capacity = 0;
 			x.printStackTrace();
 		}
-		
-		
+			
 	}
+	
+//	public IntStack3(int size) {
+//		try {
+//			stk = new int[size];
+//			
+//		}catch(OutOfMemoryError x) {
+//			capacity = 0;
+//			x.printStackTrace();
+//		}
+//		
+//		capacity = size;
+//		top=0;
+//		
+//	}
 
 //--- 스택에 x를 푸시 ---//
 	public boolean push(int x) throws OverflowIntStackException {
@@ -147,7 +150,7 @@ class IntStack3 {
 	}
 }
 
-public class 실습4_2_정수스택 {
+public class 실습4_1정수스택 {
 
 	public static void main(String[] args) {
 		Scanner stdIn = new Scanner(System.in);
