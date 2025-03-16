@@ -29,8 +29,9 @@ class Point5 {
 class CircularQueue {
 	static int QUEUE_SIZE = 0;
 	Point5[] que;//배열로 객체원형 큐 구현
-	int front, rear;
+	int front, rear, num, capacity;
 	boolean isEmptyTag;
+	
 	
 	//--- 실행시 예외: 큐가 비어있음 ---//
 	@SuppressWarnings("serial")
@@ -81,7 +82,7 @@ class CircularQueue {
 	 void clear() throws EmptyQueueException{
 		if(isEmpty()) {
 				throw new EmptyQueueException("enque: circular queue overflow"); 
-		}		 
+		}
 //추가
 	}
 

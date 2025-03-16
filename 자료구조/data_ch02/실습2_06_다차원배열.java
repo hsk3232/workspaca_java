@@ -46,13 +46,11 @@ public class 실습2_06_다차원배열 {
 		int[][] Z = new int[X.length][Y[0].length];
 		for (int i = 0; i < X.length; i++)
 			for (int j = 0; j < Y[0].length; j++) {
-				int a = 0;
-				while (a < X[0].length) {
+				for(int a = 0; a < X[0].length; a++) {
 					int c = X[i][a] * Y[a][j];
 					c += c;
 					Z[i][j] = c;
-					a++;
-				}
+					}
 
 			}
 		return Z;
@@ -73,12 +71,10 @@ public class 실습2_06_다차원배열 {
 		int[][] Z = new int[X.length][Y.length];
 		for (int a = 0; a < X.length; a++) 
 			for (int j = 0; j < Y.length; j++) {
-				int i = 0;
-				while(i < X[0].length) {
+				for(int i = 0; i < X[0].length; i++) {
 				 int c = X[a][i] * Y[j][i];
 					c += c;
 					Z[a][j] = c;
-					i++;
 				}
 
 			}

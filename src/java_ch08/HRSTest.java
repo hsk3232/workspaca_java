@@ -32,19 +32,20 @@ class Consultant extends Employee {
 
 }
 
-class Manager extends Employee { // 부모 클래스의 '추상 메서드'를 모두 구현하지 않으면, 
+abstract class Manager extends Employee { // 부모 클래스의 '추상 메서드'를 모두 구현하지 않으면, 
 	//자기 자신도 추상클래스가 된다. abstract 붙이면..
 	//<--- 추상클래스는 new 명령문을 써서 인스턴스를 만들 수 없음--->
-	public  void calcBouns(){}// 이거 없으면 오류남
+//	public  void calcBouns(){}// 이거 없으면 오류남
 	public void calcSalary() {
 		System.out.println("Manager 급여 = 기본급 + 판매수당");
 	}
 
 }
-
+//추상 클래스 Manager를 상속받는 Director는 Manager가 Employee 클래스 abstract method 중
+//구현하지 않은 method를 반드시 Overriding으로 구현해야 일반 class가 될 수 있다.
 class Director extends Manager {
 	public void calcBouns() {
-		System.out.println("Manager 보너스 = 기본급 *12*6");
+		System.out.println("Manager 보너스 = 기본급 *12*6" + '\n');
 	}
 }
 
@@ -57,10 +58,10 @@ public class HRSTest {
 		Salesman s = new Salesman();
 		Consultant c = new Consultant();
 		Director d = new Director();
-		Manager m = new Manager();
+		//Manager m = new Manager();
 		// 추상클래스라 인스턴스를 가질 수 없으나, abstract 때고 추가 해줘서 오류 없앰
 		
-		m.calcBouns();
+		//m.calcBouns();
 		s.calcBouns();
 		c.calcBouns();
 		d.calcBouns();

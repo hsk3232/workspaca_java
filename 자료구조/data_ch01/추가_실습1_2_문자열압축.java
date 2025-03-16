@@ -1,6 +1,5 @@
 package data_ch01;
 
-package data_ch01;
 
 /*
 * 문자열에서 연속해서 반복되는 문자를 해당 문자와 반복 횟수로 압축요. 
@@ -14,6 +13,8 @@ package data_ch01;
 * 객체 자체를 변경하기 때문에 반복적인 문자열 조작에 효율적
 */
 public class 추가_실습1_2_문자열압축 {
+	
+	
 
     public static void main(String[] args) {
         String input = "aabcccccaaa";

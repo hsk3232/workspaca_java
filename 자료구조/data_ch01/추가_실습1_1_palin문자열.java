@@ -5,6 +5,16 @@ package data_ch01;
 * 문자열이 palindrome(앞뒤로 동일하게 읽히는지)인지를 판별
 */
 public class 추가_실습1_1_palin문자열 {
+	
+	static boolean isPalindrome(String word) {
+		String[] tempArr = word.split("");
+		for(int i = 0; i < tempArr.length/2; i++) {
+			if(tempArr[i].compareTo(tempArr[tempArr.length-i-1])!=0) {
+				return false;
+			}
+		} 
+		return true;
+	}
 
     public static void main(String[] args) {
     	// 테스트 케이스로 사용할 예제 문자열들
