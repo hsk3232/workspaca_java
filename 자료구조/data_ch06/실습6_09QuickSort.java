@@ -29,6 +29,7 @@ class 실습6_09QuickSort {
          count++;
      } while (pl <= pr);
     // System.out.println("pl = " + pl + ", pr = " + pr);
+     //자기 자신을 부른다. 
      if (left < pr)  quickSort(a, left, pr);
      if (pl < right) quickSort(a, pl, right);
 

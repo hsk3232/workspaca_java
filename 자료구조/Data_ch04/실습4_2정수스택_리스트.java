@@ -1,6 +1,7 @@
 package Data_ch04;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -111,19 +112,16 @@ class IntStack4 {
 
 //--- 스택의 크기를 반환 ---//
 	public int getCapacity() {
-		// 추가
 		return capacity;
 	}
 
 //--- 스택에 쌓여있는 데이터 갯수를 반환 ---//
 	public int size() {
-		// 추가
 		return top;
 	}
 
 //--- 스택이 비어있는가? ---//
 	public boolean isEmpty() {
-		//추가
 		if(top == 0) 
 			return true;
 		return false;
@@ -131,7 +129,6 @@ class IntStack4 {
 
 //--- 스택이 가득 찼는가? ---//
 	public boolean isFull() {
-		// 추가
 		if (top >= capacity)
 			return true;
 		return false;
@@ -143,7 +140,7 @@ class IntStack4 {
 			System.out.println("스택이 비어있습니다.");
 			throw new EmptyIntStackException("peek: stack empty");
 		} else {
-			// 추가할 부분
+			System.out.println(stk.toString());
 		}
 	}
 }

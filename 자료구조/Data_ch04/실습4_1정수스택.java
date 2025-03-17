@@ -9,6 +9,8 @@ package Data_ch04;
 
 import java.util.Scanner;
 
+
+
 //int형 고정 길이 스택
 
 class IntStack3 {
@@ -80,8 +82,8 @@ class IntStack3 {
 //--- 스택에 x를 푸시 ---//
 	public boolean push(int x) throws OverflowIntStackException {
 		if (top >= capacity) // 스택이 가득 참
-			throw new OverflowIntStackException("push: stack overflow");
-		stk[top++] = x;
+			throw new OverflowIntStackException(null);
+			stk[top++] = x;
 		return true;
 		
 //추가
@@ -91,7 +93,7 @@ class IntStack3 {
 	public int pop() throws EmptyIntStackException {
 		//추가
 		if(top <=0)
-			throw new EmptyIntStackException("pop: stack top");
+			throw new EmptyIntStackException(null);
 		return stk[--top];
 	}
 
@@ -99,7 +101,7 @@ class IntStack3 {
 	public int peek() throws EmptyIntStackException {
 //추가
 		if(top <= 0)
-			throw new EmptyIntStackException("peek: stack top");
+			throw new EmptyIntStackException(null);
 		return stk[top-1];
 	}
 
@@ -147,12 +149,25 @@ class IntStack3 {
 //--- 스택 안의 모든 데이터를 바닥 → 정상 순서로 표시 ---//
 	public void dump() throws EmptyIntStackException{
 //추가
+		if (isEmpty()) {
+			System.out.println("스택이 비어있습니다.");
+			throw new EmptyIntStackException("peek: stack empty");
+		} else {
+			// 추가할 부분
+			System.out.print("[");
+			for(int arr : stk)
+				System.out.print(arr + " ");
+			System.out.println("]");
+		}
+		
+			
 	}
 }
 
 public class 실습4_1정수스택 {
 
 	public static void main(String[] args) {
+		@SuppressWarnings("resource")
 		Scanner stdIn = new Scanner(System.in);
 		IntStack3 s = new IntStack3(4); // 최대 64 개를 푸시할 수 있는 스택
 
@@ -206,7 +221,6 @@ public class 실습4_1정수스택 {
 					System.out.println("스택이 비어있습니다." + e.getMessage());
 					e.printStackTrace();
 				}
-				s.dump();
 				break;
 			}
 		}

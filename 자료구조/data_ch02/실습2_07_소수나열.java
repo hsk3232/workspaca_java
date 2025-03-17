@@ -11,46 +11,33 @@ package data_ch02;
  * 1은 약수가 하나뿐이라 소수가 될 수 없음.
  * 2는 약수가 두 개(1과 자기 자신)뿐이므로 소수이며, 유일한 짝수 소수
  */
-public class 실습2_07_소수나열 {
+public class 실습2_07_소수나열 { 
 	// 0 이상 n 이하의 소수 개수를 반환하는 함수
+	static int a = 0;
 	static int primeCount(int n, int[] data) {
-		int[] arr;
-		int a = 0;
 		if (isPrime(n)) {
-			data[n] = n;
-			for(int i = 0; i <=n; i++) {
-				arr  = new int[i+1];
-				if(arr[i] == 0) {
-					arr[i] = data[n];
-					i = a;
-					return i;
-				}else if(arr[i] != 0) {
-					
-				}
+			data[a++] = n;
 			}
-			
-				
-				}
-			
-		
+					
 		return a;
 	}
 
 	// 소수 판별 함수
 	public static boolean isPrime(int num) {
-		if (num == 0 || num == 1) {
-			return false;
-		} else if (num == 2 || num == 3 || num == 5 || num == 7) {
+		if(num == 2 || num ==3) {
 			return true;
 		}
-
-		for (int i = 2; i < num + 1; i++)
-			if (num % i == 0) {
-				return false;
+		else{
+			for(int i=2; i<=num; i++) {
+				if(num%i == 0) {
+					break;
+				}
+				if(num == i+1) {
+					return true;
+				}
 			}
-
-		return true;
-
+			return false;
+		} 
 	}
 
 	// 최대 공약수(GCD) 계산 함수 (유클리드 호제법 사용)
@@ -81,7 +68,7 @@ public class 실습2_07_소수나열 {
 
 	public static void main(String[] args) {
 		int[] primeArr = new int[100];
-		for (int i = 0; i <= 10; i++) {
+		for (int i = 0; i <= 20; i++) {
 			int num = primeCount(i, primeArr);
 			System.out.print("\n0부터 " + i + "까지의 소수 개수: " + num + ", ");
 			if (num > 0)
