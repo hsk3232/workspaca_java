@@ -25,7 +25,6 @@ class IntStack4 {
 //--- 실행시 예외 클래스 쓰는 연습!: 스택이 비어있음 ---//
 	@SuppressWarnings("serial")
 	public class EmptyIntStackException extends RuntimeException {
-//추가
 		public EmptyIntStackException(String msg) {
 			super(msg);
 		}
@@ -34,7 +33,6 @@ class IntStack4 {
 //--- 실행시 예외: 스택이 가득 참 ---//
 	@SuppressWarnings("serial")
 	public class OverflowIntStackException extends RuntimeException {
-//추가
 		public OverflowIntStackException(String msg) {
 			super(msg);
 		}
@@ -42,24 +40,25 @@ class IntStack4 {
 
 //--- 생성자(constructor) ---//
 	public IntStack4(int maxlen) {
-//추가
+		top = 0;
+		capacity = maxlen;
 		try {
 			stk = new ArrayList<Integer>(maxlen);
-			// 추가
+			
 		} catch (OutOfMemoryError e) { // 생성할 수 없음
 			capacity = 0;
 		}
-		top = 0;
-		capacity = maxlen;
+		
 	}
 
 //--- 스택에 x를 푸시 ---//
 	public void push(int x) throws OverflowIntStackException {
 		if (isFull()) // 스택이 가득 참
 			throw new OverflowIntStackException("push: stack overflow");
+		else
 		stk.add(x);
 		top++;
-		// 추가
+		
 	}
 
 //--- 스택에서 데이터를 팝(정상에 있는 데이터를 꺼냄) ---//
@@ -86,13 +85,13 @@ class IntStack4 {
 		 * stack을 empty로 만들어야 한다. stack이 empty일 때 clear()가 호출된 예외 발생해야 한다 pop()으로 구현하지
 		 * 않고 대신에 while 문으로 remove()를 반복 실행한다
 		 */
-		if (isEmpty()) {// 스택이 빔
-			throw new EmptyIntStackException("peek: stack empty");
-		}
-		while (top == 0) {
-			stk.remove(top - 1);
-			top--;
-		}
+		if (isEmpty()) {
+	        throw new EmptyIntStackException("clear: stack already empty");
+	    }
+	    while (!isEmpty()) {
+	        stk.remove(top - 1);
+	        top--;
+	    }
 	}
 
 //--- 스택에서 x를 찾아 인덱스(없으면 –1)를 반환 ---//
@@ -137,8 +136,7 @@ class IntStack4 {
 //--- 스택 안의 모든 데이터를 바닥 → 정상 순서로 표시 ---//
 	public void dump() throws EmptyIntStackException {
 		if (isEmpty()) {
-			System.out.println("스택이 비어있습니다.");
-			throw new EmptyIntStackException("peek: stack empty");
+			throw new EmptyIntStackException("dump: stack empty");
 		} else {
 			System.out.println(stk.toString());
 		}

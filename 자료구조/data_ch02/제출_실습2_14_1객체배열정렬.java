@@ -6,6 +6,7 @@ package data_ch02;
  * 5번 실습 - 2장 실습 2-10를 수정하여 객체 배열의 정렬 구현
  */
 import java.util.Arrays;
+import java.util.Objects;
 
 class PhyscData implements Comparable<PhyscData> {
 	String name;
@@ -60,16 +61,15 @@ class PhyscData implements Comparable<PhyscData> {
 	}
 
 	
-	public boolean equals(Object ob) {// Object 클래스 상속
-		if(this == ob)  // 작은 것부터 시작.			
-		 return true;
-		if (!(ob instanceof PhyscData)) {
-			return true;
-		} else if (this.name.compareTo(name) < 0) {
-			return true;
-		}
-		return true;
+	//같은 객체인지 비교하는 함수
+	@Override
+	public boolean equals(Object ob) {
+	    if (this == ob) return true; // 같은 객체면 true
+	    if (!(ob instanceof PhyscData p)) return false; // 타입 확인 및 형변환
 
+	    return Objects.equals(name, p.name) // 이름 비교 (null-safe)
+	        && height == p.height // 키 비교
+	        && Double.compare(vision, p.vision) == 0; // 시력 비교 (부동소수점 안전 비교)
 	}
 }
 

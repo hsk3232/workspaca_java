@@ -15,6 +15,25 @@ import java.util.Scanner;
 class Point3 {
 	private int ix;
 	private int iy;
+	public Point3(int ix, int iy) {
+		super();
+		this.ix = ix;
+		this.iy = iy;
+	}
+	public int getIx() {
+		return ix;
+	}
+	public void setIx(int ix) {
+		this.ix = ix;
+	}
+	public int getIy() {
+		return iy;
+	}
+	public void setIy(int iy) {
+		this.iy = iy;
+	}
+	
+	
 
 }
 
@@ -28,19 +47,27 @@ class objectQueue2 {
 
 
 //--- 실행시 예외: 큐가 비어있음 ---//
+	@SuppressWarnings("serial")
 	public class EmptyQueueException extends RuntimeException {
-		public EmptyQueueException() {
+		public EmptyQueueException(String msg) {
+			super(msg);
 		}
 	}
 
 //--- 실행시 예외: 큐가 가득 찼음 ---//
+	@SuppressWarnings("serial")
 	public class OverflowQueueException extends RuntimeException {
-		public OverflowQueueException() {
+		public OverflowQueueException(String msg) {
+			super(msg);
 		}
 	}
 
 //--- 생성자(constructor) ---//
 public objectQueue2(int maxlen) {
+	front = rear = 0;
+	capacity = maxlen;
+	que = new Point3[maxlen];
+	
 
 }
 

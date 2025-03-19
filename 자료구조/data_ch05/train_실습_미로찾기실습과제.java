@@ -14,6 +14,8 @@ package data_ch05;
 	  i = g; j = h; dir = N;
  */
 
+import java.util.Stack;
+
 //23.2.16 수정
 //23.2.24: 객체 배열 초기화, static 사용, 내부 클래스와 외부 클래스 사용 구분을 못하는 문제 => 선행 학습 필요
 enum Directions {
@@ -30,7 +32,6 @@ class Items {
 		this.j = j;
 		this.dir = dir;
 	}
-	
 
 }
 
@@ -42,48 +43,67 @@ class Offsets {
 		this.a = a;
 		this.b = b;
 	}
-	
-
 }
 
 public class train_실습_미로찾기실습과제 {
 
 	static Offsets[] moves = new Offsets[8];//static을 선언하는 이유를 알아야 한다
-	int maze[14][17]; // 미로
-	int mark[14][17]; //내 발자국
-
+	int maze[][]; // 미로
+	int mark[][]; //내 발자국
+	Items t = new Items(i, j, dir);
+	
 	void path(int maze[][], int mark[][], int m, int p) {
-		i = 1;
-		j = 1;
+		int i = 1;
+		int j = 1;
+		int dir = 2;
+		
+		Stack<Integer> st = new Stack<>();
+		
+		
+		
+		st.push(t);
+		
+		while (!st.isEmpty()) //스텍이 비어있지 않다면,
+		{
+			//there are more moves
+			   while ()
+			   {
+			     // (g,h) = 다음으로 움직일 곳 //현재 위치 (i,j)에 대하여 이동 방향 계산
+				   if ((g == m) && (h == p)) {
+			//success;
+			//(i,j)와 (g,h)에 대하여 mark 표시
+					   		break;
+			      		}
+			   		}
+			   }
+			
+			if((!maze[g][h])&&(!mark[g][h])){
+			 }else d++; // try next direction
+			//(i,j) 현위치에 대한mark를 취소
+			//cout<<"No path found"<<endl;
+			
+		//현재 위치 (i,j)에 대하여 mark[][]을 2로 설정
+		//8가지 방향중에서 남은 방향에 대하여
+	}
+		
+		
+		
+		
+		
 		
 	
 	
-	
-	while (!isEmpty()) //스텍이 비어있지 않다면,
-	{
-	//(i,j,dir) = coordinates and direction deleted from top of stack;
-	//현재 위치 (i,j)에 대하여 mark[][]을 2로 설정
-		//8가지 방향중에서 남은 방향에 대하여
-	   while (there are more moves)
-	   {
-	     // (g,h) = 다음으로 움직일 곳 //현재 위치 (i,j)에 대하여 이동 방향 계산
-		   if ((g == m) && (h == p)) {
-	//success;
-	//(i,j)와 (g,h)에 대하여 mark 표시
-			   		break;
-	      		}
-	   		}
-	   }
-	}
-	if((!maze[g][h])&&(!mark[g][h])){
+		
 		
 	 
-	      }else d++; // try next direction
-	}(i,j)
-	//현위치에 대한mark를 취소
-	}cout<<"No path found"<<endl;
-
+	     
+	
+	static void show(String msg, int[][] maze) {
+		
 	}
+
+
+	
 
 	public static void main(String[] args) {
 		int[][] maze = new int[14][17];
@@ -105,14 +125,14 @@ public class train_실습_미로찾기실습과제 {
 		
 		for (int ia = 0; ia < 8; ia++) {
 			moves[ia] = new Offsets(0, 0);//배열에 offsets 객체를 치환해야 한다.
-		moves[0].a = -1;	moves[0].b = 0;
-		moves[1].a = -1;	moves[1].b = 1;
-		moves[2].a = 0;		moves[2].b = 1;
-		moves[3].a = 1;		moves[3].b = 1;
-		moves[4].a = 1;		moves[4].b = 0;
-		moves[5].a = 1;		moves[5].b = -1;
-		moves[6].a = 0;		moves[6].b = -1;
-		moves[7].a = -1;	moves[7].b = -1;
+			moves[0].a = -1;	moves[0].b = 0;
+			moves[1].a = -1;	moves[1].b = 1;
+			moves[2].a = 0;		moves[2].b = 1;
+			moves[3].a = 1;		moves[3].b = 1;
+			moves[4].a = 1;		moves[4].b = 0;
+			moves[5].a = 1;		moves[5].b = -1;
+			moves[6].a = 0;		moves[6].b = -1;
+			moves[7].a = -1;	moves[7].b = -1;
 		//Directions d;
 		//d = Directions.N;
 		//d = d + 1;//java는 지원안됨
@@ -131,5 +151,6 @@ public class train_실습_미로찾기실습과제 {
 		show("mark[12,15]::", mark);
 
 
+		}
 	}
 }
