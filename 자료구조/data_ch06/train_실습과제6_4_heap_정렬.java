@@ -1,4 +1,4 @@
-package data_ch06;
+package Chap6_Sorting;
 
 import java.util.Random;
 import java.util.Scanner;
