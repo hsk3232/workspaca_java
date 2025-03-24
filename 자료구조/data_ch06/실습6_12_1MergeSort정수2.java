@@ -1,4 +1,4 @@
-package Chap6_Sorting;
+package data_ch06;
 
 public class 실습6_12_1MergeSort정수2 {
 
@@ -9,15 +9,18 @@ public class 실습6_12_1MergeSort정수2 {
 		int ix = 0;
 		int p = lefta, q = leftb;
 		while (p <= righta && q <= rightb) {
-			if (a[p] < a[q]) temp[ix++] = a[p++];
-			else if (a[p] > a[q]) temp[ix++] = a[q++];
+			if (a[p] < a[q]) 
+				temp[ix++] = a[p++];
+			else if (a[p] > a[q]) 
+				temp[ix++] = a[q++];
 			else {
-				temp[ix++] = a[p++];temp[ix++] = a[q++];
+				temp[ix++] = a[p++]; 
+				temp[ix++] = a[q++];
 			}
 		}
 		while (p > righta && q <= rightb) temp[ix++] = a[q++];
 		while (q > rightb && p <= righta) temp[ix++] = a[p++];
-		System.out.println();
+		System.out.println("-----");
 		for (int j = 0; j < ix; j++) {
 			a[lefta+ j] = temp[j];
 			System.out.print(" "+ a[lefta+j]);
