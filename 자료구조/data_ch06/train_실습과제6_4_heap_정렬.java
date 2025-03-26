@@ -15,7 +15,7 @@ class Heap implements MaxHeap {
 	private int MaxSize; // Maximum allowable size of MaxHeap
 	
 	public Heap(int sz) {
-
+		
 	}
 
 	public void display() {//heap 배열을 출력한다. 배열 인덱스와 heap[]의 값을 출력한다.
@@ -64,7 +64,7 @@ public class train_실습과제6_4_heap_정렬 {
 		Heap heap = new Heap(20);
 	    final int count = 10;//난수 생성 갯수
 	    int[] x = new int[count+1];//x[0]은 사용하지 않으므로 11개 정수 배열을 생성한다 
-	    int []sorted = new int[count];//heap을 사용하여 deleted 정수를 배열 sorted[]에 보관후 출력한다
+	    int[] sorted = new int[count];//heap을 사용하여 deleted 정수를 배열 sorted[]에 보관후 출력한다
 
 		do {
 			System.out.println("Max Tree. Select: 1 insert, 2 display, 3 sort, 4 exit => ");

@@ -1,4 +1,7 @@
 package data_ch05;
+
+import java.util.Arrays;
+
 /*
  * void permutate(char []arr, int k)
  * {
@@ -16,23 +19,43 @@ package data_ch05;
     }
  */
 public class train_5_5_2문자열순열실습 {
-
+	static int count = 1;
+	
+	// 두 요소를 교환하는 함수
+    public static void swap(char[] arr, int i, int j) {
+    	char t = arr[i]; 
+    	arr[i] = arr[j]; 
+    	arr[j] = t;
+    }
+		
     // 주어진 문자 배열의 순열을 생성하는 함수
     public static void permutate(char[] arr, int index) {
-        for(int i = 0; i<arr.length; i++) {
-        	index=i;
-        	arr[i] = Arrays.
-        }
+    	int m = arr.length;
+    	
+//    	char[][] temp = new char[arr.length][m];
+//    	temp[i][j] = arr[j];
+    	
+    	
+    	if(index == m) {
+    		System.out.print("["+ count++ + "]");
+    		System.out.println(Arrays.toString(arr));
+    		
+    		
+    	}
+    	else {
+    		for (int i = 0; i < m; i++) {
+    			swap(arr, index, i);
+    			permutate(arr, index+1);
+    			swap(arr, index, i);
+    		}	
+    	}
     }
 
-    // 두 요소를 교환하는 함수
-    public static void swap(char[] arr, int i, int j) {
-
-    }
+    
 
     public static void main(String[] args) {
         // 문자열을 문자 배열로 변환
-        String l = "abcde";
+        String l = "abc";
         char[] arr = l.toCharArray();
 
         // 순열 생성 및 출력
