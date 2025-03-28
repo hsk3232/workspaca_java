@@ -18,26 +18,27 @@ class PhyscData implements Comparable<PhyscData>{
 
 	@Override
 	public int compareTo(PhyscData o) {
-		int a = name.compareTo(o.name);
-		if(a == 0) {
-			a = Integer.compare(height, o.height);
-		}
-		else if( a == 0) {
-			a = Double.compare(vision, o.vision);
-		}
-		return a;
+		int compName = name.compareTo(o.name);
+		int compHeight = Integer.compare(height, o.height);
+		int compVision = Double.compare(vision, o.vision);
+		
+		if(compName != 0) return compName;
+		else if(compHeight != 0) return compHeight;
+		else if(compVision != 0) return compVision;
+		else return 0; 
+	
 	}
 	
 }
 
 public class train_실습과제6_2_객체merge정렬 {
 	// --- 배열 요소 a[idx1]와 a[idx2]의 값을 교환 ---//
-	static void merge(PhyscData[] a, int la, int ra, int lb, int rb ) {
+	static void merge(PhyscData[] a, int lA, int rA, int lB, int rB ) {
 		//임시 배열 생성
 		PhyscData temp[] = new PhyscData[a.length];
 		int i = 0;
-		int p = la, q = lb;
-		while(p <= ra && q <= rb) {
+		int p = lA, q = lB;
+		while(p <= rA && q <= rB) {
 			//a[p] < a[q]
 			if (a[p].compareTo(a[q])<0) 
 				temp[i++] = a[p++];
@@ -48,12 +49,12 @@ public class train_실습과제6_2_객체merge정렬 {
 				temp[i++] = a[q++];
 			}
 		}
-		while (p <= ra) temp[i++] = a[p++];  // 고친 부분 1
-		while (q <= rb) temp[i++] = a[q++];  // 고친 부분 2
+		while (p <= rA) temp[i++] = a[p++];  // 고친 부분 1
+		while (q <= rB) temp[i++] = a[q++];  // 고친 부분 2
 
 		// temp를 원래 배열로 복사
 		for (int j = 0; j < i; j++) {
-			a[la + j] = temp[j];
+			a[lA + j] = temp[j];
 		}
 
 	}
@@ -70,8 +71,10 @@ public class train_실습과제6_2_객체merge정렬 {
 
 	public static void main(String[] args) {
 		PhyscData[] x = {
-		         new PhyscData("강민하", 162, 0.3),	         
+		         new PhyscData("강민하", 162, 0.3),
+		         new PhyscData("강민하", 172, 0.3),
 		         new PhyscData("박준서", 171, 2.0),
+		         new PhyscData("박준서", 171, 1.0),
 		         new PhyscData("김찬우", 173, 0.7),
 		         new PhyscData("이수연", 168, 0.4),
 		         new PhyscData("장경오", 171, 1.2),
