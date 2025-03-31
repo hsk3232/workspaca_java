@@ -46,7 +46,6 @@ public class train_실습과제6_2_객체merge정렬 {
 				temp[i ++] = a[q ++];
 			else {
 				temp[i++] = a[p++];
-				temp[i++] = a[q++];
 			}
 		}
 		while (p <= rA) temp[i++] = a[p++];  // 고친 부분 1

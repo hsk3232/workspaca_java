@@ -95,22 +95,22 @@ class ObjectStack5 {
 	}
 
 //--- 스택에서 x를 찾아 인덱스(없으면 –1)를 반환 ---//
-	public int indexOf(TreeNode5 x) {
-		int front = 0;
-		int last = capacity-1;
-		
-		do{
-			int mid = (front+last)/2;
-			if(data.get(mid) == x) {
-				return mid;
-			}
-			else if(data.get(mid) < x) {
-				front = last +1; 
-			}else front = last-1;
-		} while (front <= last); 
-		
-		return -1;
-	}
+//	public int indexOf(TreeNode5 x) {
+//		int front = 0;
+//		int last = capacity-1;
+//		
+//		do{
+//			int mid = (front+last)/2;
+//			if(data.get(mid) == x) {
+//				return mid;
+//			}
+//			else if(data.get(mid) < x) {
+//				front = last +1; 
+//			}else front = last-1;
+//		} while (front <= last); 
+//		
+//		return -1;
+//	}
 
 //--- 스택의 크기를 반환 ---//
 	public int getCapacity() {
@@ -184,15 +184,16 @@ class ObjectQueue5 {
 
 //--- 큐에 데이터를 인큐 ---//
 	public int enque(TreeNode5 x) throws OverflowQueueException {
-		if(!isEmpty())
-			
+		if(!isEmpty()) {
+			que[rear-1] = x;
+		}
 		throw new OverflowQueueException("데이터가 다 찼음");
 		
 	}
 
 //--- 큐에서 데이터를 디큐 ---//
 	public TreeNode5 deque() throws EmptyQueueException {
-		
+		if(!)
 		throw new EmptyQueueException("데이터가 없음");
 
 	}
@@ -261,11 +262,20 @@ class Tree5 {
 	}
 
 	boolean isLeafNode(TreeNode5 current) {// current 가 leaf node 인지 조사
-		
+		if(current.LeftChild ==null && current.RightChild ==null) {
+			return true;
+		}
+		return false;
 	}
 	
 	boolean isOneChildNode(TreeNode5 current) {// current 가 leaf node 인지 조사
-		
+		if(current.LeftChild ==null && current.RightChild !=null) {
+			return true;
+		}
+		else if(current.LeftChild !=null && current.RightChild ==null) {
+			return true;
+		}
+		return false;
 	}
 	
 	// main에서 호출되는 driver function
@@ -433,7 +443,20 @@ class Tree5 {
 
 	boolean search(int num) {// num 값을 binary search tree에서 검색
 		TreeNode5 p = root;
-
+		while (p !=null) {
+			if(p.data == num) {
+				return true;
+			}
+			else {
+				if(p.data <num) {
+					p = p.LeftChild;
+				}
+				else {
+					p = p.RightChild;
+				}
+			}
+		}
+		return false;
 	}
 }
 

@@ -83,7 +83,7 @@ public class train_실습_미로찾기실습과제 {
 
 		// 스텍에 미로를 다 넣고 꺼낼 건데, 다 없어질 때까지 해라.
 		while (!st.isEmpty()) {
-			// 스택에 저장된 위치를 꺼낸다.
+			// 스택에 저장한 위치를 꺼낸다.
 			t = st.pop();
 
 			int i = t.getI();
