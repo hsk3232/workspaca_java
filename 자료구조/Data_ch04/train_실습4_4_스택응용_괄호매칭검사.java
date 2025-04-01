@@ -1,7 +1,10 @@
 package Data_ch04;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 /*
 문제 설명:
@@ -30,42 +33,47 @@ public class train_실습4_4_스택응용_괄호매칭검사 {
 		String[] arr = s.split("");
 		String[] a = { "[", "<", "{", "(" };
 		String[] b = { "]", ">", "}", ")" };
+		List<Integer> arr2 = new ArrayList<>();
 
-		Map<String, String> word = new HashMap<>();
-		for (int j = 0; j < arr.length; j++) {
-			word.put(arr[j], arr[j]);
-		}
-		
-		int count = 0;
-		int i =0;
-		
-		while(i <a.length) {
-			if(word.containsKey(a[i])){
-				if(word.containsKey(b[i])) {
-					count++;
-				}
-				else if(!word.containsKey(b[i])){
-					count =0;
-					break;
-				}
-			}
-			else if(!word.containsKey(a[i])) {
-					if(word.containsKey(b[i])) {
-						count = 0;
-						break;
-					}
-				}
-				i++;
-			} 
-				
-		
-		if(count > 0) {
-			return true;
-		}
-		return false;
-		
+//		Map<String, String> word = new HashMap<>();
+//		for (int j = 0; j < arr.length; j++) {
+//			word.put(arr[j], arr[j]);
+//		}
+		Stack<String> word = new Stack<>();
 		
 	}
+	
+		
+//		int count = 0;
+//		int i =0;
+//		
+//		while(i <a.length) {
+//			if(word.containsKey(a[i])){
+//				if(word.containsKey(b[i])) {
+//					count++;
+//				}
+//				else if(!word.containsKey(b[i])){
+//					count =0;
+//					break;
+//				}
+//			}
+//			else if(!word.containsKey(a[i])) {
+//					if(word.containsKey(b[i])) {
+//						count = 0;
+//						break;
+//					}
+//				}
+//				i++;
+//			} 
+//				
+//		
+//		if(count > 0) {
+//			return true;
+//		}
+//		return false;
+//		
+//		
+//	}
 
 	public static void main(String[] args) {
 
