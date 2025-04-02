@@ -36,7 +36,7 @@ class Graph {
 		
 	}
 	
-	//그래프에 간선을 추가
+	//그래프에 간선(Edge)을 추가
 	void insertEdge(int start, int end) {
 		if(adjacencyList[start] == null) {
 			adjacencyList[start] = new LinkedList<>();
