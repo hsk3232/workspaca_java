@@ -16,7 +16,7 @@ class LinkedList {
 	}
 
 	public void add(String data) {
-		/*
+		
 		//코드 이해해야 한다 - 자료구조 수업에 도움이 됨
 		Node newNode = new Node(data);
 		if (head == null) {
@@ -29,11 +29,11 @@ class LinkedList {
 			next.link = newNode;
 
 		}
-		*/
+		
 	}
 
 	public void print() {
-		/*
+		
 		if (head == null) {
 			System.out.println("등록된 데이터가 없습니다.");
 		} else {
@@ -44,11 +44,11 @@ class LinkedList {
 				next = next.link;
 			}
 		}
-		*/
+		
 	}
 	
 	public void delete(String data) {
-		/*
+		
 		if (head == null) {
 			System.out.println("삭제할 데이터가 없습니다.");
 		} else {
@@ -67,7 +67,7 @@ class LinkedList {
 			System.out.println("삭제할 데이터가 없읍니다.");
 			return;
 		}
-		*/
+		
 	}
 }
 public class 실습_내부클래스_linkedList {
@@ -84,11 +84,8 @@ public class 실습_내부클래스_linkedList {
 		myList.delete("177");
 		System.out.println("삭제후 출력: ");
 		myList.print();
-		//Node ndx = new Node("kim");
-		//MyLinkedList.Node nd = myList.new Node("Hong");//not visible
-		//nd.data = "hello";
+//		Node ndx = new Node("kim");
+//		MyLinkedList.Node nd = myList.new Node("Hong");//not visible
+//		nd.data = "hello";
 	}
 }
-
-}
-

@@ -5,13 +5,17 @@ import java.util.ArrayList;
 
 //Overflow 예외 클래스
 class OverflowException extends RuntimeException { // 교재 553
-	
+	public OverflowException() throws RuntimeException{
+		super();
+	}
 
 }
 
 //Underflow 예외 클래스
 class UnderflowException extends RuntimeException {
-
+	public UnderflowException() throws RuntimeException {
+		super();
+	}
 }
 
 //Book 클래스
@@ -20,10 +24,65 @@ class Book implements Comparable<Book> {
 	private String author;
 	private int publicationYear;
 	private String isbn;
+	
+	public Book(String title, String author, int publicationYear, String isbn) {
+		this.title = title;
+		this.author = author;
+		this.publicationYear = publicationYear;
+		this.isbn = isbn;
+	}
+	
+
+	public String getTitle() {
+		return title;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+	public String getAuthor() {
+		return author;
+	}
+
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+
+	public int getPublicationYear() {
+		return publicationYear;
+	}
+
+
+	public void setPublicationYear(int publicationYear) {
+		this.publicationYear = publicationYear;
+	}
+
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
 
 	@Override
 	public String toString() {
 		return String.format("도서명:\t%s\t저자:\t%s\t출판연도:\t%d\tISBN:\t%s", title, author, publicationYear, isbn);
+	}
+
+
+	@Override
+	public int compareTo(Book o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 
@@ -32,24 +91,30 @@ class Book implements Comparable<Book> {
 class Library {
 	static final int CAPACITY = 5; // 기본 용량을 5로 설정
 	private ArrayList<Book> books;
-
+	
 
 	// 책 추가 (용량 초과 시 OverflowException 발생)
 	public void addBook(Book book) {
-
+		books = new ArrayList<>();
+		
+		if (books.isEmpty()) {
+			books.add(book);
+		} else {
+			throw new OverflowException();
+		}
 	}
 
 	// 책 삭제 (빈 목록에서 삭제 시 UnderflowException 발생)
 	public Book removeBook() {
-
+		
 	}
 
 	public void printBooks(String msg) {
-
+		System.out.println("msg");
 	}
 
 	public void sortBooksByTitle() {
-
+		
 	}
 
 	public void sortBooksByISBN() {
@@ -57,7 +122,7 @@ class Library {
 	}
 
 	public Book searchBookByTitle(String title) {
-
+		
 	}
 }
 
@@ -96,8 +161,8 @@ public class 실습11_C3_예외처리_과제 {
 		try {
 
 			// 도서관의 용량을 초과하여 책을 추가 (예외 발생)
-		} catch () {
-
+		} catch (OverflowException e) {
+			System.out.println("용량 초과");
 		}
 
 		// 도서 목록 출력
