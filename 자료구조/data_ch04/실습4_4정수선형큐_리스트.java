@@ -1,50 +1,26 @@
-package Data_ch04;
+package data_ch04;
 
 /*
- * 실습 4_6번 객체 원형 큐를 배열로 구현
- * 교재 148 실습 4_3은 정수 원형 큐를 배열로 구현한 코드임 > 객체 버젼으로 구현
- */
-
-import java.util.Random;
-import java.util.Scanner;
-
-/*
-* Queue of ArrayList of Point
+*  실습 4_4번 - 정수 선형 큐를 리스트로 구현
+* 교재 148 페이지는 원형큐를 배열로 구현한 코드 실습 4번에 활용
 */
 
-class Point3 {
-	private int ix;
-	private int iy;
-	public Point3(int ix, int iy) {
-		super();
-		this.ix = ix;
-		this.iy = iy;
-	}
-	public int getIx() {
-		return ix;
-	}
-	public void setIx(int ix) {
-		this.ix = ix;
-	}
-	public int getIy() {
-		return iy;
-	}
-	public void setIy(int iy) {
-		this.iy = iy;
-	}
-	
-	
+import java.util.Scanner;
 
-}
+import data_ch04.IntStack4.EmptyIntStackException;
 
-//int형 고정 길이 큐
-class objectQueue2 {
-  private Point3[] que;
+/*
+* Queue of ArrayList
+*/
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+class Queue4 {
+	private List<Integer> que;// 원형큐로 구현하지 않는다
 	private int capacity; // 큐의 크기
 	private int front; // 맨 처음 요소 커서
 	private int rear; // 맨 끝 요소 커서
-	boolean isEmptyTag;
-
 
 //--- 실행시 예외: 큐가 비어있음 ---//
 	@SuppressWarnings("serial")
@@ -63,37 +39,63 @@ class objectQueue2 {
 	}
 
 //--- 생성자(constructor) ---//
-public objectQueue2(int maxlen) {
-	front = rear = 0;
-	capacity = maxlen;
-	que = new Point3[maxlen];
-	
+	public Queue4(int maxlen) {
+		que = new ArrayList<Integer>(maxlen);
+		capacity = maxlen;
+		front = rear = 0;
 
-}
+	}
 
 //--- 큐에 데이터를 인큐 ---//
-	public int enque(Point3 x) throws OverflowQueueException {
-
+	public int enque(int x) throws OverflowQueueException {
+		if (isFull())
+			throw new OverflowQueueException("가득 찼습니다.");
+		que.add(x);
+		rear++;
+		return x;
 	}
 
 //--- 큐에서 데이터를 디큐 ---//
-	public Point3 deque() throws EmptyQueueException {
-
+	public int deque() throws EmptyQueueException {
+		if (isEmpty())
+			throw new EmptyQueueException("데이터 없음");
+		int val = que.get(front);
+		front++;
+		return val;
 	}
 
 //--- 큐에서 데이터를 피크(프런트 데이터를 들여다봄) ---//
-	public Point3 peek() throws EmptyQueueException {
-
+	public int peek() throws EmptyQueueException {
+		if (isEmpty())
+			throw new EmptyQueueException("데이터 없음");
+		return que.get(front);
 	}
 
 //--- 큐를 비움 ---//
 	public void clear() {
-		front = rear = 0;
+		int result = que.get(0);
+		if (result == 0) {// 스택이 빔
+			throw new EmptyQueueException("peek: stack empty");
+		}
+		while (rear == 0) {
+			que.remove(0);
+			rear--;
+		}
 	}
 
 //--- 큐에서 x를 검색하여 인덱스(찾지 못하면 –1)를 반환 ---//
-	public int indexOf(Point3 x) {
-
+	public int indexOf(int x) {
+		while (capacity < front - 1) {
+			int last = rear - 1;
+			for (int i = last; last > capacity; i--) {
+				if (que.get(i) == x) {
+					i = last;
+					return que.indexOf(i);
+				}
+			}
+			capacity = last;
+		}
+		return -1;
 	}
 
 //--- 큐의 크기를 반환 ---//
@@ -103,31 +105,40 @@ public objectQueue2(int maxlen) {
 
 //--- 큐에 쌓여 있는 데이터 개수를 반환 ---//
 	public int size() {
-		
+		int num = rear - front;
+		return num;
+
 	}
 
 //--- 큐가 비어있는가? ---//
 	public boolean isEmpty() {
-		
+		if (front == rear)
+			return true;
+		return false;
 	}
 
 //--- 큐가 가득 찼는가? ---//
-	public boolean isFull() {
-
+	public boolean isFull() {// 이러한 기본 function을 만들어서 메소드로 선언해 쓰는 연습 할 것.
+		// return que.size()>=capacity; arraylist라서 쓸 수 있음
+		return rear - front >= capacity;
 	}
 
 //--- 큐 안의 모든 데이터를 프런트 → 리어 순으로 출력 ---//
 	public void dump() {
-
+		if (isEmpty()) {
+			System.out.println("출력할 데이터가 없습니다.");
+		}
+		System.out.println(que.toString());
 	}
+
 }
-public class 실습4_6객체선형큐_배열 {
+
+public class 실습4_4정수선형큐_리스트 {
 	public static void main(String[] args) {
 		Scanner stdIn = new Scanner(System.in);
-		objectQueue2 oq = new objectQueue2(4); // 최대 64개를 인큐할 수 있는 큐
+		Queue4 oq = new Queue4(4); // 최대 64개를 인큐할 수 있는 큐
 		Random random = new Random();
-		int rndx = 0, rndy = 0;
-		Point3 p = null;
+		int rndx = 0, p = 0;
 		while (true) {
 			System.out.println(" "); // 메뉴 구분을 위한 빈 행 추가
 			System.out.printf("현재 데이터 개수: %d / %d\n", oq.size(), oq.getCapacity());
@@ -135,15 +146,11 @@ public class 실습4_6객체선형큐_배열 {
 			int menu = stdIn.nextInt();
 			switch (menu) {
 			case 1: // 인큐
-
 				rndx = random.nextInt(20);
-
-				rndy = random.nextInt(20);
-				System.out.print("입력데이터: (" + rndx + ", " + rndy + ")");
-				p = new Point3(rndx,rndy);
+				System.out.print("입력데이터: (" + rndx + ")");
 				try {
-					oq.enque(p);
-				} catch(objectQueue2.OverflowQueueException e) {
+					oq.enque(rndx);
+				} catch (data_ch04.Queue4.OverflowQueueException e) {
 					System.out.println("stack이 가득찼있습니다.");
 				}
 				break;
@@ -152,7 +159,7 @@ public class 실습4_6객체선형큐_배열 {
 				try {
 					p = oq.deque();
 					System.out.println("디큐한 데이터는 " + p + "입니다.");
-				} catch (objectQueue2.EmptyQueueException e) {
+				} catch (data_ch04.Queue4.EmptyQueueException e) {
 					System.out.println("큐가 비어 있습니다.");
 				}
 				break;
@@ -161,7 +168,7 @@ public class 실습4_6객체선형큐_배열 {
 				try {
 					p = oq.peek();
 					System.out.println("피크한 데이터는 " + p + "입니다.");
-				} catch (objectQueue2.EmptyQueueException e) {
+				} catch (data_ch04.Queue4.EmptyQueueException e) {
 					System.out.println("큐가 비어 있습니다.");
 				}
 				break;

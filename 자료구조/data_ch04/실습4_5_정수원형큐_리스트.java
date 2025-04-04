@@ -1,10 +1,12 @@
-package Data_ch04;
+package data_ch04;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import data_ch04.IntQueue3.EmptyIntQueue3Exception;
+import data_ch04.IntQueue3.OverflowIntQueue3Exception;
+
 import java.util.Random;
-import Data_ch04.IntQueue3.EmptyIntQueue3Exception;
-import Data_ch04.IntQueue3.OverflowIntQueue3Exception;
 
 /*
  * 실습 4_5번 - 정수 배열 원형 큐

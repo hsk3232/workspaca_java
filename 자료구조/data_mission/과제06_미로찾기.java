@@ -1,4 +1,4 @@
-package data_ch05;
+package data_mission;
 /*
  * 미로 찾기 문제
  * 문제: 미로 테이블 (12, 15)을 상하좌우 울타리 친 maze[14][17]를 만들어라 단, 입구는 (1, 1), 출구는 (12, 15)이다.
@@ -61,7 +61,7 @@ class Offsets {
 
 }
 
-public class train_실습_미로찾기실습과제 {
+public class 과제06_미로찾기 {
 
 	// 움직이는 방향 8가지 //static을 선언하는 이유를 알아야 한다
 	static Offsets[] moves = new Offsets[8];

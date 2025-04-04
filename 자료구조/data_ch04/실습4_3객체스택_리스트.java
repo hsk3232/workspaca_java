@@ -1,4 +1,4 @@
-package Data_ch04;
+package data_ch04;
 /*
  * 실습 4_3번
  * point(x,y) 객체를 스택에 저장

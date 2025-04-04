@@ -1,4 +1,4 @@
-package data_ch01;
+package data_mission;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
  * 
  * 패턴이 나타나는 인덱스를 반환
  */
-public class 제출_실습1_3_부분문자열검색 {
+public class 과제01_부분문자열검색 {
 	public static void searchSubstring(String text, String pattern) {
 //		List<Integer> result = new ArrayList<Integer>();
 //		for (int i = 0; i <= text.length() - pattern.length(); i++) {

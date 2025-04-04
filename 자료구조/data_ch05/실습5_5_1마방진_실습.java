@@ -9,7 +9,7 @@ import java.util.Arrays;
  * 이때 이 동일한 합을 **매직 상수(Magic Constant)**라고 합니다.
  * n은 3,5,7 등 홀수일 때
  */
-public class train_5_5_1마방진_실습 {
+public class 실습5_5_1마방진_실습 {
 
 	public static void main(String[] args) {
         int n = 3; // 마방진의 크기

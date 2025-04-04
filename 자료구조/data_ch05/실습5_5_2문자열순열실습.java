@@ -18,7 +18,7 @@ import java.util.Arrays;
     	}
     }
  */
-public class train_5_5_2문자열순열실습 {
+public class 실습5_5_2문자열순열실습 {
 	static int count = 1;
 	
 	// 두 요소를 교환하는 함수

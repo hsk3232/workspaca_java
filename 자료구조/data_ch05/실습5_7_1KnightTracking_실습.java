@@ -1,4 +1,4 @@
-package Chap5_Recursive;
+package data_ch05;
 
 import java.util.Stack;
 
@@ -25,9 +25,25 @@ class Offsets4 {
 	public Offsets4(int a, int b) {
 		this.a = a; this.b = b;
 	}
+	public int getA() {
+		return a;
+	}
+	public void setA(int a) {
+		this.a = a;
+	}
+	public int getB() {
+		return b;
+	}
+	public void setB(int b) {
+		this.b = b;
+	}
+	
+	
+	
 }
-public class train_5_7_1KnightTracking_실습 {
-	static Offsets4[] moves = new Offsets4[8];//static을 선언하는 이유를 알아야 한다
+public class 실습5_7_1KnightTracking_실습 {
+	//static을 선언하는 이유를 알아야 한다
+	static Offsets4[] moves = new Offsets4[8];
     static final int N = 8;
 
 	
@@ -47,11 +63,14 @@ public class train_5_7_1KnightTracking_실습 {
 
     // 체스판을 초기화 (-1로 설정)
     private static void initializeBoard() {
- 
+    	
     }
 
     // 체스판의 범위 내에서 유효한 움직임인지 확인
     private static boolean isSafe(int x, int y) {
+    	if(x >= board.length && y >= board[N].length) {
+    		return false;
+    	}
         return (x >= 0 && x < N && y >= 0 && y < N && board[x][y] == -1);
     }
 
@@ -73,7 +92,9 @@ public class train_5_7_1KnightTracking_실습 {
 
         // 시작 위치를 스택에 푸시
         stack.push(new Point(startX, startY, 0));
-        board[startX][startY] = 0; // 시작 위치는 첫 번째 이동
+        
+        // 시작 위치는 첫 번째 이동
+        board[startX][startY] = 0; 
 
         while (!stack.isEmpty()) {
             
@@ -89,6 +110,7 @@ public class train_5_7_1KnightTracking_실습 {
 
     // 결과 출력
     private static void showTracking() {
+    	
 
     }
 
@@ -100,7 +122,8 @@ public class train_5_7_1KnightTracking_실습 {
         // 나이트가 (0, 0)에서 시작
         if (solveKnightTracking(0, 0)) {
             showTracking();
-        } else {
+        } 
+        else {
             System.out.println("해결할 수 없습니다.");
         }
     }

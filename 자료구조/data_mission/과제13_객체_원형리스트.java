@@ -1,4 +1,4 @@
-package data_ch08;
+package data_mission;
 
 /*
  * 정수 리스트 > 객체 리스트> 객체 원형 리스트 

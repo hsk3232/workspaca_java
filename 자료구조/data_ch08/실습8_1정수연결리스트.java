@@ -95,7 +95,7 @@ class LinkedList1 {
 	}
 }
 
-public class train_실습과제8_1정수연결리스트 {
+public class 실습8_1정수연결리스트 {
 	enum Menu {
 		Add("삽입"), Delete("삭제"), Show("인쇄"), Search("검색"), Merge("합병"), Exit("종료");
 		// 표시할 문자열

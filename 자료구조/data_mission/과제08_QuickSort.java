@@ -1,4 +1,4 @@
-package data_ch06;
+package data_mission;
 
 
 import java.util.Random;
@@ -32,7 +32,7 @@ class Point {
 	}
 }
 
-public class train_실습과제6_1_QuickSort {
+public class 과제08_QuickSort {
 
 
 //퀵 정렬(비재귀 버전)

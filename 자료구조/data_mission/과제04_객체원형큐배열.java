@@ -1,4 +1,4 @@
-package Data_ch04;
+package data_mission;
 /*
  * 실습 6번: 원형 큐로서 큐에 Point 객체를 배열로 저장
  * 실습4_3_2 정수 원형 큐 배열을 객체 버젼으로 구현하는 것임
@@ -49,21 +49,18 @@ class Point5 {
 	public String toString() {
 		return "Point5 [ix=" + ix + ", iy=" + iy + "]";
 	}
-	
-	
 
 }
 
 class CircularQueue {
 	static int QUEUE_SIZE = 0;
-	Point5[] que;// 배열로 객체원형 큐 구현
+	Point5[] que; // 배열로 객체원형 큐 구현
 	int front, rear, num;
 	boolean isEmptyTag;
 
 	// --- 실행시 예외: 큐가 비어있음 ---//
 	@SuppressWarnings("serial")
 	public class EmptyQueueException extends RuntimeException {
-		// 추가
 		public EmptyQueueException(String msg) {
 			super(msg);
 		}
@@ -72,7 +69,6 @@ class CircularQueue {
 	// --- 실행시 예외: 큐가 가득 찼음 ---//
 	@SuppressWarnings("serial")
 	public class OverflowQueueException extends RuntimeException {
-		// 추가
 		public OverflowQueueException(String msg) {
 			super(msg);
 		}
@@ -95,41 +91,50 @@ class CircularQueue {
 
 	// --- 스텍에 it을 푸시 ---//
 	void push(Point5 it) throws OverflowQueueException {
-		if (isFull())
+		if (isFull()) {
 			throw new OverflowQueueException("push: circular queue overflow");
+		} else {
+			que[rear++] = it;
+			num++;
 
-		que[rear++] = it;
-		num++;
-		if (rear == front)
-			rear = 0;
-		isEmptyTag = false;
+			if (rear == front) {
+				rear = 0;
+				isEmptyTag = false;
+			}
+		}
+
 	}
 
-	//
+	// --- pop ---- //
 	Point5 pop() throws EmptyQueueException {
 		if (isEmpty()) {
 			throw new EmptyQueueException("pop: circular queue overflow");
-		}
-		Point5 val = que[front++];
-		num--;
-		if (front == QUEUE_SIZE)
-			front = 0;
-		return val;
+		} else {
+			Point5 val = que[front++];
+			num--;
+			
+			if (front == QUEUE_SIZE) {
+				front = 0;
 
+			}
+			return val;
+		}
 	}
 
 	void clear() throws EmptyQueueException {
-		if (num==0)
+		if (num == 0) {
 			throw new EmptyQueueException("enque: circular queue overflow");
-		
-		num=rear=front=0;
-		
+		} else {
+			num = rear = front = 0;
+		}
 	}
 
 	public Point5 peek() throws EmptyQueueException {
-		if (isEmpty())
+		if (isEmpty()) {
 			throw new EmptyQueueException("peek: queue empty"); // 큐가 비어있음
-		return que[rear - 1];
+		} else {
+			return que[rear - 1];
+		}
 	}
 
 	// --- 큐의 크기를 반환 ---//
@@ -147,29 +152,35 @@ class CircularQueue {
 
 	// --- 원형 큐가 비어있는가? --- 수정 필요//
 	public boolean isEmpty() {
-		if (num <= 0)
+		if (num <= 0) {
 			return true;
-		return false;
+		} else {
+			return false;
+		}
+
 	}
 
 	// --- 원형 큐가 가득 찼는가? --- 수정 필요//
 	public boolean isFull() {
-		if (num >= QUEUE_SIZE)
+		if (num >= QUEUE_SIZE) {
 			return true;
-		return false;
+		} else {
+			return false;
+		}
 	}
 
 	public void dump() throws EmptyQueueException {
-		if (isEmpty())
+		if (isEmpty()) {
 			throw new EmptyQueueException("dump: queue empty");
-		
-		System.out.println(Arrays.toString(que));
+		} else {
+			System.out.println(Arrays.toString(que));
+		}
 
 	}
 
 }
 
-public class 실습4_7객체원형큐배열 {
+public class 과제04_객체원형큐배열 {
 	public static void main(String[] args) {
 		Scanner stdIn = new Scanner(System.in);
 		CircularQueue oq = new CircularQueue(4); // 최대 4개를 인큐할 수 있는 큐

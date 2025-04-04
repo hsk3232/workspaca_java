@@ -1,4 +1,4 @@
-package Data_ch04;
+package data_ch04;
 
 import java.util.ArrayList;
 import java.util.Arrays;

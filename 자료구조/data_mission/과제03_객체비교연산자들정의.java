@@ -1,4 +1,4 @@
-package data_ch03;
+package data_mission;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -106,7 +106,7 @@ class VisionOrder implements Comparator<PhyscData3>{
 	
 	
 }
-public class train실습3_8객체비교연산자들정의 {	
+public class 과제03_객체비교연산자들정의 {	
 	static final Comparator<PhyscData3> HEIGHT_ORDER = new HeightOrder();
 	
 	public static void showData(String msg, PhyscData3[] arr) {

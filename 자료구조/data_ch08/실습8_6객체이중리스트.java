@@ -132,7 +132,7 @@ class DoubledLinkedList2 {
 	}
 }
 
-public class train_실습과제8_6객체이중리스트 {
+public class 실습8_6객체이중리스트 {
 	enum Menu {
 		Add("삽입"), Delete("삭제"), Show("인쇄"), Search("검색"), Merge_NewList("병합-새리스트"), Merge_InPlace("병합-제자리"), Exit("종료");
 

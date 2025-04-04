@@ -1,4 +1,4 @@
-package data_ch06;
+package data_mission;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -53,7 +53,7 @@ class Heap implements MaxHeap {
 		System.out.println("Heap Full");
 	}
 }
-public class train_실습과제6_4_heap_정렬 {
+public class 과제11_heap_정렬 {
 	 static void showData(int[] d) {
 
 	 }

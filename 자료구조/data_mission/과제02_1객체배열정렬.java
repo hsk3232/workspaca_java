@@ -1,11 +1,5 @@
-package data_ch02;
+package data_mission;
 
-/*
- * 2장 제출 과제 
- * Comparable 인터페이스의 구현 
- * 5번 실습 - 2장 실습 2-10를 수정하여 객체 배열의 정렬 구현
- */
-import java.util.Arrays;
 import java.util.Objects;
 
 class PhyscData implements Comparable<PhyscData> {
@@ -73,7 +67,7 @@ class PhyscData implements Comparable<PhyscData> {
 	}
 }
 
-public class 제출_실습2_14_1객체배열정렬 {
+public class 과제02_1객체배열정렬 {
 	static void swap(PhyscData[] arr, int ind1, int ind2) {
 		PhyscData a = arr[ind1];
 		arr[ind1] = arr[ind2];

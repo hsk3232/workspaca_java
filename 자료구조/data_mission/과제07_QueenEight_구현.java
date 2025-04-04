@@ -1,4 +1,4 @@
-package data_ch05;
+package data_mission;
 //print로 변수 값 확인하는 디버깅 노동 피하자
 //이클립스 디버깅 실습 필요 : variables tab, Expressions tab 사용하기
 //92개 해 확인 필요
@@ -131,7 +131,7 @@ class Stack4 {
 	}
 }
 
-public class train_QueenEight_구현실습과제 {
+public class 과제07_QueenEight_구현 {
 
 	int numberOfSolutions = 0;
 	int count = 0;//퀸 배치 갯수

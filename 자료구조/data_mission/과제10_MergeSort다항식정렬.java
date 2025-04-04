@@ -1,4 +1,4 @@
-package data_ch06;
+package data_mission;
 /*
  * 6장 구현과제3
  */
@@ -7,20 +7,28 @@ class Polynomial3 implements Comparable<Polynomial3>{
     double coef;           // 계수
     int    exp;            // 지수
 
-    Polynomial3(){}
+    
     //--- 생성자(constructor) ---//
     Polynomial3(double coef, int exp) {
         this.coef = coef;  this.exp = exp; 
     }
 
+
+	@Override
+	public int compareTo(Polynomial3 o) {
+		
+		return 0;
+	}
+
 }
-public class 실습6_12_3MergeSort다항식정렬 {
+public class 과제10_MergeSort다항식정렬 {
 
 	// --- 배열 요소 a[idx1]와 a[idx2]의 값을 교환 ---//
 	static void merge(Polynomial3[] a, int lefta, int righta, int leftb, int rightb ) {
 		 //body를 지우고 작성 훈련 연습이 도움이 된다 
 		Polynomial3 temp[] = new Polynomial3[30];
-		//구현코드
+		
+		
 	}
 
 	// --- 퀵 정렬(비재귀 버전)---//
