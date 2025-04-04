@@ -180,7 +180,7 @@ class CircularQueue {
 
 }
 
-public class 과제04_객체원형큐배열 {
+public class 과제04_객체_원형큐배열 {
 	public static void main(String[] args) {
 		Scanner stdIn = new Scanner(System.in);
 		CircularQueue oq = new CircularQueue(4); // 최대 4개를 인큐할 수 있는 큐

@@ -67,7 +67,7 @@ class PhyscData implements Comparable<PhyscData> {
 	}
 }
 
-public class 과제02_1객체배열정렬 {
+public class 과제02_객체_배열정렬 {
 	static void swap(PhyscData[] arr, int ind1, int ind2) {
 		PhyscData a = arr[ind1];
 		arr[ind1] = arr[ind2];

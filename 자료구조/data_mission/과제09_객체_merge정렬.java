@@ -31,7 +31,7 @@ class PhyscData implements Comparable<PhyscData>{
 	
 }
 
-public class 과제09_객체merge정렬 {
+public class 과제09_객체_merge정렬 {
 	// --- 배열 요소 a[idx1]와 a[idx2]의 값을 교환 ---//
 	static void merge(PhyscData[] a, int lA, int rA, int lB, int rB ) {
 		//임시 배열 생성

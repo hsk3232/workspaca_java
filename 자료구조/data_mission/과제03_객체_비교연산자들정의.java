@@ -106,7 +106,7 @@ class VisionOrder implements Comparator<PhyscData3>{
 	
 	
 }
-public class 과제03_객체비교연산자들정의 {	
+public class 과제03_객체_비교연산자들정의 {	
 	static final Comparator<PhyscData3> HEIGHT_ORDER = new HeightOrder();
 	
 	public static void showData(String msg, PhyscData3[] arr) {
