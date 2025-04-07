@@ -47,23 +47,27 @@ public class 실습5_7_1KnightTracking_실습 {
     static final int N = 8;
 
 	
-    // 체스판 배열
+    // 체스판 배열 생성
     private static int[][] board = new int[N][N];
 
     // Point 객체로 나이트의 위치를 저장
     static class Point {
-        int x, y, moveToward;
+    	int x, y, moveToward;
 
-        Point(int x, int y, int move) {
+    	Point(int x, int y, int move) {
             this.x = x;
             this.y = y;
             this.moveToward = move;
         }
     }
 
-    // 체스판을 초기화 (-1로 설정)
+    // 체스판 전체를 -1로 초기화 (방문한 적 없는 곳을 -1로 표현하기 위함)
     private static void initializeBoard() {
-    	
+    	for(int i = 0; i < N-1; i++) {
+    		for(int j = 0; j < N-1; j++) {
+    			board[i][j] = -1;
+    		}
+    	}
     }
 
     // 체스판의 범위 내에서 유효한 움직임인지 확인
@@ -74,10 +78,12 @@ public class 실습5_7_1KnightTracking_실습 {
         return (x >= 0 && x < N && y >= 0 && y < N && board[x][y] == -1);
     }
 
-    // 나이트 투어 알고리즘 (비재귀적으로 스택 사용)
+    // 나이트 투어 알고리즘 (비재귀적으로 스택 사용) / 나이트가 이동할 수 있는 8가지 방향
     private static boolean solveKnightTracking(int startX, int startY) {
-    	for (int ia = 0; ia < N; ia++)
-    		moves[ia] = new Offsets4(0, 0);//배열에 Offsets4 객체를 치환해야 한다.
+    	//배열에 Offsets4 객체를 치환해야 한다.
+    	for (int ia = 0; ia < N; ia++) {
+    		moves[ia] = new Offsets4(0, 0);
+    	}
     	moves[0].a = -2;	moves[0].b = -1;//NW으로 이동
     	moves[1].a = -2;	moves[1].b = 1;//NE
     	moves[2].a = -1;	moves[2].b = 2;//EN
@@ -86,37 +92,35 @@ public class 실습5_7_1KnightTracking_실습 {
     	moves[5].a = 2;		moves[5].b = -1;//SW
     	moves[6].a = -1;	moves[6].b = -2;//WS
     	moves[7].a = 1;		moves[7].b = -2;//WN
-        // 나이트가 이동할 수 있는 8가지 방향
-        
-        Stack<Point> stack = new Stack<>();
+       
+        //나의 현제 위치를 저장할 스택 생성
+    	Stack<Point> stack = new Stack<>();
 
-        // 시작 위치를 스택에 푸시
-        stack.push(new Point(startX, startY, 0));
+        // 시작 위치를 스택에 푸시(저장)
+    	stack.push(new Point(startX, startY, 0));
         
-        // 시작 위치는 첫 번째 이동
-        board[startX][startY] = 0; 
+        // 처음으로 방문한 곳을 -1에서 0으로 변경
+    	board[startX][startY] = 0; 
 
-        while (!stack.isEmpty()) {
+    	while (!stack.isEmpty()) {
             
-            // 8가지 방향으로 나이트 이동 시도
+            // 스텍에 저장된 위치 
            
 
             // 더 이상 이동할 곳이 없을 경우
            
         }
-
-        return false; // 해결하지 못함
+    	 // 해결하지 못함
+        return false;
     }
 
     // 결과 출력
     private static void showTracking() {
     	
-
+    	
     }
 
     public static void main(String[] args) {
-
-
         initializeBoard();
 
         // 나이트가 (0, 0)에서 시작

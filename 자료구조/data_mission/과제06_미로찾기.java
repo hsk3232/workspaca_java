@@ -75,7 +75,7 @@ public class 과제06_미로찾기 {
 		// 우선법에 의해 오른쪽으로 먼저 가야 함으로 east부터 감.
 		Items t = new Items(1, 1, 2);
 
-		// 스택 생성
+		//나의 현재 위치를 저장할 스택 생성
 		Stack<Items> st = new Stack<>();
 		// 첫 번째 값을 푸시
 		st.push(t);
@@ -85,7 +85,8 @@ public class 과제06_미로찾기 {
 		while (!st.isEmpty()) {
 			// 스택에 저장한 위치를 꺼낸다.
 			t = st.pop();
-
+			
+			//t의 값을 각각의 변수로 분해
 			int i = t.getI();
 			int j = t.getJ();
 			int dir = t.getDir();
