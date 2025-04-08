@@ -104,8 +104,14 @@ public class 실습5_7_1KnightTracking_실습 {
 
     	while (!stack.isEmpty()) {
             
-            // 스텍에 저장된 위치 
-           
+            // 현재 위치
+    		Point t = stack.peek();
+    		
+    		int x = t.x;
+    		int y = t.y;
+    		int 
+    		
+    		//이것이 진짜
 
             // 더 이상 이동할 곳이 없을 경우
            
