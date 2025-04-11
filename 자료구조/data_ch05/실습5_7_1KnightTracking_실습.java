@@ -101,7 +101,8 @@ public class 실습5_7_1KnightTracking_실습 {
         
         // 처음으로 방문한 곳을 -1에서 0으로 변경
     	board[startX][startY] = 0; 
-
+    	
+    	//스텍이 비기 전까지 반복
     	while (!stack.isEmpty()) {
             
             // 현재 위치
@@ -109,12 +110,12 @@ public class 실습5_7_1KnightTracking_실습 {
     		
     		int x = t.x;
     		int y = t.y;
-    		int 
+    		int move = t.moveToward;
     		
-    		//이것이 진짜
-
+    		
             // 더 이상 이동할 곳이 없을 경우
            
+    		
         }
     	 // 해결하지 못함
         return false;
