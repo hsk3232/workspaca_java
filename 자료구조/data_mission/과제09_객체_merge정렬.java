@@ -4,12 +4,12 @@ package data_mission;
  * 6장 구현 실습과제2
  */
 
-class PhyscData implements Comparable<PhyscData>{
+class PhyscData500 implements Comparable<PhyscData500>{
     String name;              // 이름
     int    height;            // 키
     double vision;            // 시력
     
-    public PhyscData(String name, int height, double vision) {
+    public PhyscData500(String name, int height, double vision) {
     	this.name = name;
 		this.height = height;
 		this.vision = vision;
@@ -17,7 +17,7 @@ class PhyscData implements Comparable<PhyscData>{
     }
 
 	@Override
-	public int compareTo(PhyscData o) {
+	public int compareTo(PhyscData500 o) {
 		int compName = name.compareTo(o.name);
 		int compHeight = Integer.compare(height, o.height);
 		int compVision = Double.compare(vision, o.vision);
@@ -33,9 +33,9 @@ class PhyscData implements Comparable<PhyscData>{
 
 public class 과제09_객체_merge정렬 {
 	// --- 배열 요소 a[idx1]와 a[idx2]의 값을 교환 ---//
-	static void merge(PhyscData[] a, int lA, int rA, int lB, int rB ) {
+	static void merge(PhyscData500[] a, int lA, int rA, int lB, int rB ) {
 		//임시 배열 생성
-		PhyscData temp[] = new PhyscData[a.length];
+		PhyscData500 temp[] = new PhyscData500[a.length];
 		int i = 0;
 		int p = lA, q = lB;
 		while(p <= rA && q <= rB) {
@@ -59,7 +59,7 @@ public class 과제09_객체_merge정렬 {
 	}
 
 	// --- 퀵 정렬(비재귀 버전)---//
-	static void MergeSort(PhyscData[] a, int left, int right) {
+	static void MergeSort(PhyscData500[] a, int left, int right) {
 		int mid = (left+right)/2;
 		if (left == right) return;
 		MergeSort(a, left, mid);
@@ -69,16 +69,16 @@ public class 과제09_객체_merge정렬 {
 	}
 
 	public static void main(String[] args) {
-		PhyscData[] x = {
-		         new PhyscData("강민하", 162, 0.3),
-		         new PhyscData("강민하", 172, 0.3),
-		         new PhyscData("박준서", 171, 2.0),
-		         new PhyscData("박준서", 171, 1.0),
-		         new PhyscData("김찬우", 173, 0.7),
-		         new PhyscData("이수연", 168, 0.4),
-		         new PhyscData("장경오", 171, 1.2),
-		         new PhyscData("황지안", 169, 0.8),
-		         new PhyscData("유서범", 171, 1.5),
+		PhyscData500[] x = {
+		         new PhyscData500("강민하", 162, 0.3),
+		         new PhyscData500("강민하", 172, 0.3),
+		         new PhyscData500("박준서", 171, 2.0),
+		         new PhyscData500("박준서", 171, 1.0),
+		         new PhyscData500("김찬우", 173, 0.7),
+		         new PhyscData500("이수연", 168, 0.4),
+		         new PhyscData500("장경오", 171, 1.2),
+		         new PhyscData500("황지안", 169, 0.8),
+		         new PhyscData500("유서범", 171, 1.5),
 		     };
 		int nx = x.length;
 

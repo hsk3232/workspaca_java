@@ -1,16 +1,15 @@
 package data_mission;
 
 
-import java.util.Random;
 import java.util.Stack;
 
 //stack 1개를 사용한 non-recursve QuickSort() 구현
 
-class Point {
+class Point20 {
 	private int ix;
 	private int iy;
 
-	public Point(int x, int y) {
+	public Point20(int x, int y) {
 		ix = x;
 		iy = y;
 	}
@@ -53,34 +52,31 @@ public class 과제08_QuickSort {
 		}
 		
 		
-		Stack<Point> st = new Stack<>();		
-		Point pt = new Point(left, right);
+		Stack<Point20> st = new Stack<>();		
+		Point20 pt = new Point20(left, right);
 		st.push(pt);
 		
 		
 		while (!st.isEmpty()) {
-			pt = st.pop();
-			int pl = left = pt.getX();
-			int pr = right = pt.getY();
-			int x = a[(left + right) / 2];
-				
-				//배열을 양분함
-			do {
-				while (a[pl] < x) {pl++;}
-				while (a[pr] > x) {pr--;}
-					if(pl<=pr)
-						swap(a, pl++, pr--);
-				
-				} while (pl<=pr);
-			
-			if(left<pr) {
-				pt = new Point(left, pr);
-				st.push(pt);
-			}
-			if (pl < right) {
-				pt = new Point(pl, right);
-				st.push(pt);
-			}
+		    pt = st.pop();
+		    int l = pt.getX();
+		    int r = pt.getY();
+		    int pl = l;
+		    int pr = r;
+		    int x = a[(l + r) / 2]; 
+
+		    // 분할
+		    do {
+		        while (a[pl] < x) pl++;
+		        while (a[pr] > x) pr--;
+		        if (pl <= pr)
+		            swap(a, pl++, pr--);
+		    } while (pl <= pr);
+
+		    if (l < pr)
+		        st.push(new Point20(l, pr));
+		    if (pl < r)
+		        st.push(new Point20(pl, r));
 		}
 			
 	}

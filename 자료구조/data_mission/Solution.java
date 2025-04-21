@@ -7,22 +7,22 @@ import java.util.Scanner;
 class Solution {
 	
 	
-	static List<Integer> list = new ArrayList<>();
-    
-	
 	public List<Integer> makeList(int n) {
+		List<Integer> list = new ArrayList<>();
 		 // 0은 약수에서 제외, 자기 자신
-        for(int i = 1; i <= n; i++) {
+		for(int i = 1; i <= n; i++) {
             if(n%i == 0) {
                 list.add(i);
             }
         }
+        
         return list;
         
 	}
     
     // 약수 생성 및 합계 method
     public int solution(int n) {
+    	List<Integer> list = makeList(n);
     	      
         // 결과값 초기화
         int answer = 0;
@@ -49,7 +49,7 @@ class Solution {
     	  Solution so = new Solution();
     	  System.out.print( n + "의 약수는");
           System.out.print(so.makeList(n) +"입니다.");
-          System.out.print("이를 모두 더하면"+ so.solution(n) +"입니다.");
+          System.out.print("이를 모두 더하면 "+ so.solution(n) +"입니다.");
       
     }
     
