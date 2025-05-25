@@ -36,6 +36,7 @@ public class 과제01_부분문자열검색 {
 		
 	public static void main(String[] args) {
 		String text = "ababcabcabababd";
+		
 		String pattern = "ababd";
 		searchSubstring(text, pattern);
 

@@ -18,8 +18,9 @@ public class 실습6_12_1MergeSort정수2 {
 				temp[ix++] = a[q++];
 			}
 		}
-		while (p > righta && q <= rightb) temp[ix++] = a[q++];
-		while (q > rightb && p <= righta) temp[ix++] = a[p++];
+		while (p <= righta) temp[ix++] = a[p++];
+		while (q <= rightb) temp[ix++] = a[q++];
+
 		System.out.println("-----");
 		for (int j = 0; j < ix; j++) {
 			a[lefta+ j] = temp[j];
