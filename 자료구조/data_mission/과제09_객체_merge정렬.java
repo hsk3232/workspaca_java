@@ -61,11 +61,15 @@ public class 과제09_객체_merge정렬 {
 	// --- 퀵 정렬(비재귀 버전)---//
 	static void MergeSort(PhyscData500[] a, int left, int right) {
 		int mid = (left+right)/2;
-		if (left == right) return;
-		MergeSort(a, left, mid);
-		MergeSort(a, mid+1, right);
+//		if (left == right) return;
+//		MergeSort(a, left, mid);
+		
+		
+
 		merge(a, left, mid, mid+1, right);
-		return;
+
+		
+		
 	}
 
 	public static void main(String[] args) {

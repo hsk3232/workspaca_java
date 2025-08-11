@@ -13,7 +13,10 @@ package data_ch01;
 * 객체 자체를 변경하기 때문에 반복적인 문자열 조작에 효율적
 */
 public class 추가_실습1_2_문자열압축 {
-	
+	public static String compress(String word) {
+		
+		return;
+	}
 	
 
     public static void main(String[] args) {
