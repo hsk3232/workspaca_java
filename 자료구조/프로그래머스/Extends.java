@@ -2,7 +2,6 @@ package 프로그래머스;
 
 abstract class A {
     abstract int absMethod();
-
     protected int aVal = 100;
 
     static void staticA() {
@@ -93,7 +92,7 @@ public class Extends {
         System.out.println(p.x);
         System.out.println(((C) p).x);
         System.out.println(((G) p).x);
-        p.staticShow();
+        p.staticShow(); // static 클래스 호출 방법 반드시 기억하기.
         ((C) p).staticShow();
         G.staticShow();
         p.callParentPrivate();
